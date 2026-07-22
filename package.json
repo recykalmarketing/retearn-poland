@@ -1,0 +1,33 @@
+{
+  "name": "retearn-poland-website",
+  "version": "1.0.0",
+  "description": "Retearn DRS Website for Poland",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.3.0",
+    "postcss": "^8.4.31",
+    "framer-motion": "^10.16.4",
+    "react-i18next": "^13.2.3",
+    "i18next": "^23.7.1",
+    "i18next-browser-languagedetector": "^7.2.0",
+    "react-hook-form": "^7.48.0",
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.42",
+    "@types/react-dom": "^18.2.17",
+    "typescript": "^5.3.3",
+    "eslint": "^8.55.0",
+    "eslint-config-next": "^14.0.0"
+  }
+}

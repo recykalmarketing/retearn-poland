@@ -42,7 +42,7 @@ export default function Home() {
       <Header />
 
       {/* 02. Hero - Frame-based Video */}
-      <HeroFrames frameCount={180} fps={30} />
+      <HeroFrames frameCount={463} fps={30} />
 
       {/* 03. Audience Selector */}
       <section id="audiences" className="bg-white">

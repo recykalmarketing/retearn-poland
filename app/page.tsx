@@ -43,10 +43,8 @@ export default function Home() {
     <main className="w-full">
       <Header />
 
-      {/* 02. Hero - Frame-based Video */}
       <HeroFrames frameCount={463} fps={30} />
 
-      {/* 03. Audience Selector */}
       <section id="audiences" className="bg-white">
         <div className="max-w-5xl mx-auto">
           <h2>Built for every return location.</h2>
@@ -71,107 +69,81 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 04. For Retailers */}
       <section id="retailers" className="bg-white">
         <div className="max-w-5xl mx-auto">
           <span className="eyebrow">FOR RETAILERS</span>
           <h2>Keep returns moving.</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl">
-            Compact, connected RVMs designed around your store.
-          </p>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl">Compact, connected RVMs designed around your store.</p>
           <ul className="highlights">
             <li>Compact footprint</li>
             <li>Remote monitoring</li>
             <li>Simple customer experience</li>
           </ul>
           <button className="btn-primary mb-12">Plan a Retail Return Point</button>
-          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">
-            [Retail Store Visual]
-          </div>
+          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">[Retail Store Visual]</div>
         </div>
       </section>
 
-      {/* 05. For DRS Operators */}
       <section id="drs-operators" className="bg-white">
         <div className="max-w-5xl mx-auto">
           <span className="eyebrow">FOR DRS OPERATORS</span>
           <h2>Run every location from one connected view.</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl">
-            Monitor machines, returns and capacity across your network.
-          </p>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl">Monitor machines, returns and capacity across your network.</p>
           <ul className="highlights">
             <li>Fleet visibility</li>
             <li>Return data</li>
             <li>Flexible deployment</li>
           </ul>
           <button className="btn-primary mb-12">Discuss Your Network</button>
-          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">
-            [Network Dashboard Visual]
-          </div>
+          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">[Network Dashboard Visual]</div>
         </div>
       </section>
 
-      {/* 06. For Housing Cooperatives */}
       <section id="housing-cooperatives" className="bg-white">
         <div className="max-w-5xl mx-auto">
           <span className="eyebrow">FOR HOUSING COOPERATIVES</span>
           <h2>Bring returns closer to home.</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl">
-            A convenient shared return point for residents.
-          </p>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl">A convenient shared return point for residents.</p>
           <ul className="highlights">
             <li>Local access</li>
             <li>Compact setup</li>
             <li>Connected servicing</li>
           </ul>
           <button className="btn-primary mb-12">Plan a Housing Pilot</button>
-          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">
-            [Residential Community Visual]
-          </div>
+          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">[Residential Community Visual]</div>
         </div>
       </section>
 
-      {/* 07. For Educational Institutions */}
       <section id="educational-institutions" className="bg-white">
         <div className="max-w-5xl mx-auto">
           <span className="eyebrow">FOR EDUCATIONAL INSTITUTIONS</span>
           <h2>Make returning a daily habit.</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl">
-            Simple return infrastructure for students, staff and visitors.
-          </p>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl">Simple return infrastructure for students, staff and visitors.</p>
           <ul className="highlights">
             <li>Easy to use</li>
             <li>Visible participation</li>
             <li>Measurable impact</li>
           </ul>
           <button className="btn-primary mb-12">Plan a Campus Programme</button>
-          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">
-            [Campus Visual]
-          </div>
+          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">[Campus Visual]</div>
         </div>
       </section>
 
-      {/* 08. For Municipalities */}
       <section id="municipalities" className="bg-white">
         <div className="max-w-5xl mx-auto">
           <span className="eyebrow">FOR MUNICIPALITIES</span>
           <h2>Make returns part of public life.</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl">
-            Connected return points for neighbourhoods and public spaces.
-          </p>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl">Connected return points for neighbourhoods and public spaces.</p>
           <ul className="highlights">
             <li>Accessible locations</li>
             <li>Outdoor-ready options</li>
             <li>Operational visibility</li>
           </ul>
           <button className="btn-primary mb-12">Plan a Municipal Network</button>
-          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">
-            [Public Plaza Visual]
-          </div>
+          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">[Public Plaza Visual]</div>
         </div>
       </section>
 
-      {/* 09. Solutions */}
       <section id="solutions" className="bg-white">
         <div className="max-w-5xl mx-auto">
           <span className="eyebrow">SOLUTIONS</span>
@@ -193,7 +165,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. RVMs */}
       <section id="rvms" className="bg-white">
         <div className="max-w-5xl mx-auto">
           <span className="eyebrow">OUR RVMS</span>
@@ -204,7 +175,7 @@ export default function Home() {
                 name: 'Reklaim Ace',
                 subtitle: 'Compact RVM',
                 desc: 'For smaller stores and lower-volume locations.',
-                specs: ['Approximately 200–300 returns per day', 'Compact footprint', 'Remote monitoring', 'Fill-level alerts'],
+                specs: ['200-300 returns per day', 'Compact footprint', 'Remote monitoring', 'Fill-level alerts'],
                 cta: 'Explore Reklaim Ace',
               },
               {
@@ -216,9 +187,7 @@ export default function Home() {
               },
             ].map((product) => (
               <div key={product.name}>
-                <div className="bg-gray-100 h-48 rounded-lg mb-6 flex items-center justify-center text-gray-400">
-                  [{product.name} Image]
-                </div>
+                <div className="bg-gray-100 h-48 rounded-lg mb-6 flex items-center justify-center text-gray-400">[{product.name} Image]</div>
                 <h3>{product.name}</h3>
                 <p className="text-sm text-gray-500 mb-4">{product.subtitle}</p>
                 <p className="text-sm text-gray-600 mb-6">{product.desc}</p>
@@ -237,7 +206,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 11. Technology */}
       <section id="technology" className="bg-white">
         <div className="max-w-5xl mx-auto">
           <span className="eyebrow">TECHNOLOGY</span>
@@ -259,14 +227,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 12. About */}
       <section id="about" className="bg-white">
         <div className="max-w-5xl mx-auto">
           <span className="eyebrow">ABOUT RETEARN</span>
           <h2>Circular infrastructure beyond the machine.</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl">
-            Retearn is a Recykal venture building connected technology for material return and recovery.
-          </p>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl">Retearn is a Recykal venture building connected technology for material return and recovery.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {[
               { title: 'Circular-economy experience', desc: 'Built on experience across circular-economy technology.' },
@@ -283,14 +248,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 13. FAQ */}
       <section id="faq" className="bg-white">
         <div className="max-w-3xl mx-auto">
           <h2>Good to know.</h2>
           <div className="space-y-6 mt-8">
             {[
               { q: 'Which RVM is right for our location?', a: 'We recommend a configuration based on space and return volume.' },
-              { q: 'Can Retearn support Poland's DRS?', a: 'The deployment is configured around the selected operator and requirements.' },
+              { q: 'Can Retearn support Poland DRS?', a: 'The deployment is configured around the selected operator and requirements.' },
               { q: 'Can it connect with our systems?', a: 'Integration options are reviewed before deployment.' },
               { q: 'Can an RVM be installed outdoors?', a: 'Yes, depending on location and operating requirements.' },
               { q: 'Can we start with a pilot?', a: 'Yes. We can begin with selected locations.' },
@@ -305,13 +269,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 14. Book Meeting */}
       <section id="book-meeting" className="bg-primary text-white">
         <div className="max-w-3xl mx-auto">
-          <h2 style={{ color: 'white' }}>Let's plan your return solution.</h2>
-          <p className="text-white/80 mb-8">
-            A focused 30-minute conversation about your locations and requirements.
-          </p>
+          <h2 style={{ color: 'white' }}>Let us plan your return solution.</h2>
+          <p className="text-white/80 mb-8">A focused 30-minute conversation about your locations and requirements.</p>
           <form className="space-y-4 mb-8">
             {[
               { label: 'Full Name', name: 'name', type: 'text' },
@@ -339,13 +300,9 @@ export default function Home() {
             <input type="number" placeholder="Number of Locations" className="text-black" />
             <input type="text" placeholder="Project Timeline" className="text-black" />
             <textarea placeholder="Message" rows={4} className="text-black"></textarea>
-            <button type="submit" className="btn-primary w-full">
-              Choose a Meeting Time
-            </button>
+            <button type="submit" className="btn-primary w-full">Choose a Meeting Time</button>
           </form>
-          <p className="text-white/60 text-sm text-center">
-            Practical discussion. Clear next steps.
-          </p>
+          <p className="text-white/60 text-sm text-center">Practical discussion. Clear next steps.</p>
         </div>
       </section>
 

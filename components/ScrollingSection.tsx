@@ -22,20 +22,27 @@ export default function ScrollingSection({ items, onItemChange }: ScrollingSecti
   const { t } = useTranslation();
   const [activeItem, setActiveItem] = useState(0);
   const [imageOpacity, setImageOpacity] = useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-50% 0px -50% 0px',
-      threshold: 0,
-    };
+    const container = containerRef.current;
+    if (!container) return;
 
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = itemRefs.current.indexOf(entry.target as HTMLDivElement);
-          if (index !== -1) {
+    const handleScroll = () => {
+      const containerTop = container.offsetTop;
+      const containerHeight = container.clientHeight;
+      const scrollPosition = window.scrollY - containerTop;
+      const visibleHeight = window.innerHeight;
+
+      itemRefs.current.forEach((ref, index) => {
+        if (!ref) return;
+        const itemTop = ref.offsetTop - containerTop;
+        const itemHeight = ref.clientHeight;
+
+        // Check if item is roughly in the middle of viewport
+        if (scrollPosition + visibleHeight / 2 >= itemTop && scrollPosition + visibleHeight / 2 < itemTop + itemHeight) {
+          if (activeItem !== index) {
             setImageOpacity(0);
             setTimeout(() => {
               setActiveItem(index);
@@ -47,18 +54,9 @@ export default function ScrollingSection({ items, onItemChange }: ScrollingSecti
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    itemRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      itemRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, [items, onItemChange]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activeItem, items, onItemChange]);
 
   const handleCTA = () => {
     const element = document.getElementById('book-meeting');
@@ -68,26 +66,26 @@ export default function ScrollingSection({ items, onItemChange }: ScrollingSecti
   };
 
   return (
-    <div className="relative">
-      <div className="flex h-screen">
+    <div ref={containerRef} className="w-full bg-white">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen lg:sticky lg:top-0">
         {/* Left: Scrolling content */}
-        <div className="w-full lg:w-1/2 overflow-y-auto">
+        <div className="relative z-10 bg-white">
           {items.map((item, index) => (
             <div
               key={item.id}
               ref={(el) => {
                 itemRefs.current[index] = el;
               }}
-              className="h-screen flex items-center px-6 sm:px-8 lg:px-12 py-12"
+              className="min-h-screen flex items-center px-6 sm:px-8 lg:px-12 py-12"
             >
-              <div>
+              <div className="w-full max-w-xl">
                 <span className="text-sm font-semibold text-primary uppercase tracking-wider">
                   {item.eyebrow}
                 </span>
                 <h2 className="mt-4 text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                   {item.title}
                 </h2>
-                <p className="mt-6 text-lg text-gray-600 leading-relaxed max-w-md">
+                <p className="mt-6 text-lg text-gray-600 leading-relaxed">
                   {item.description}
                 </p>
                 <ul className="mt-10 space-y-5">
@@ -110,13 +108,13 @@ export default function ScrollingSection({ items, onItemChange }: ScrollingSecti
         </div>
 
         {/* Right: Fixed image */}
-        <div className="hidden lg:flex w-1/2 fixed right-0 top-0 h-screen items-center justify-center bg-gray-100">
+        <div className="hidden lg:flex items-center justify-center bg-gray-100 sticky top-0 h-screen">
           <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
             <div
-              className="bg-gradient-to-br from-gray-200 to-gray-300 w-3/4 h-3/4 rounded-3xl flex items-center justify-center shadow-2xl transition-opacity duration-300"
+              className="bg-gradient-to-br from-gray-200 to-gray-300 w-4/5 h-4/5 rounded-3xl flex items-center justify-center shadow-2xl transition-opacity duration-300"
               style={{ opacity: imageOpacity }}
             >
-              <span className="text-gray-500 font-medium text-xl">{items[activeItem]?.imageText}</span>
+              <span className="text-gray-500 font-medium text-xl text-center px-4">{items[activeItem]?.imageText}</span>
             </div>
           </div>
         </div>

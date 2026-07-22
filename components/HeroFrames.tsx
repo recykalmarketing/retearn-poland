@@ -48,19 +48,20 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
   }, [frameCount, fps]);
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-400 to-gray-600">
+    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900">
       {/* Frame-based video background */}
       <div
-        className="absolute inset-0 w-full h-full bg-center bg-cover"
+        className="absolute inset-0 w-full h-full bg-center bg-cover transition-opacity duration-500"
         style={{
           backgroundImage: `url(/videos/frames/frame_${String(currentFrame).padStart(4, '0')}.webp)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          opacity: 0.9,
         }}
       />
 
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Text Content - Overlay */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">

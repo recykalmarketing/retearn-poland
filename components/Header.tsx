@@ -74,15 +74,15 @@ export default function Header() {
             </div>
           </a>
 
-          <nav className="hidden lg:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`text-xs font-semibold transition-colors uppercase tracking-wide ${
+                className={`text-sm font-bold transition-colors ${
                   activeSection === item.id
                     ? isScrolled ? 'text-primary' : 'text-white'
-                    : isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white hover:text-white/80'
+                    : isScrolled ? 'text-gray-700 hover:text-primary' : 'text-white hover:text-white'
                 }`}
               >
                 {t(`header.${item.label}`)}

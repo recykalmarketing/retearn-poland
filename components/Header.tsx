@@ -96,12 +96,12 @@ export default function Header() {
       isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center h-16 gap-6">
-          <a href="#" className="flex-shrink-0 flex items-center">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center h-16 gap-6">
+          <a href="#" className="flex-shrink-0 flex items-center justify-self-start">
             <Logo className={`h-6 w-auto transition-colors ${isScrolled ? 'text-black' : 'text-white'}`} />
           </a>
 
-          <nav className="hidden lg:flex items-center gap-5 flex-1">
+          <nav className="hidden lg:flex items-center gap-5 justify-self-center">
             {primaryNavItems.map((item) => (
               <button key={item.id} onClick={() => handleNavClick(item.id)} className={navLinkClass(item.id)}>
                 {t(`header.${item.label}`)}
@@ -142,7 +142,7 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3 flex-shrink-0">
+          <div className="flex items-center gap-3 flex-shrink-0 justify-self-end">
             <button
               onClick={toggleLanguage}
               className={`text-xs font-semibold px-2 py-1 transition-colors ${

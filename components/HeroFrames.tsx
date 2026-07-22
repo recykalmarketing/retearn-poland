@@ -85,7 +85,7 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
   };
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-dark via-slate-800 to-slate-900">
+    <section id="hero" className="relative h-screen flex items-center overflow-hidden bg-gradient-to-br from-primary-dark via-slate-800 to-slate-900">
       {/* Frame-based video background */}
       <div
         className="absolute inset-0 w-full h-full bg-center bg-cover transition-opacity duration-700"
@@ -101,15 +101,15 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
       <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Text Content - Overlay */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <div className="relative z-10 max-w-3xl px-6 sm:px-12 lg:px-20 text-left">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8 text-white drop-shadow-lg">
           {headline}
         </h1>
-        <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed mb-12 drop-shadow-md">
+        <p className="text-xl md:text-2xl text-white max-w-2xl leading-relaxed mb-12 drop-shadow-md">
           {subheading}
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button onClick={() => handleScroll('book-meeting')} className="px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-all">
+        <div className="flex flex-col sm:flex-row gap-4 justify-start">
+          <button onClick={() => handleScroll('book-meeting')} className="px-8 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-all">
             {t('header.bookMeeting')}
           </button>
           <button onClick={() => handleScroll('rvms')} className="px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary transition-all">

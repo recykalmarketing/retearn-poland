@@ -67,17 +67,17 @@ export default function Header() {
       isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex items-center h-16 gap-6">
           <a href="#" className="flex-shrink-0 flex items-center">
-            <Logo className={`h-9 w-auto transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`} />
+            <Logo className={`h-6 w-auto transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`} />
           </a>
 
-          <nav className="hidden lg:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center gap-4 flex-1 min-w-0">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`text-xs font-semibold uppercase tracking-widest transition-colors ${
+                className={`text-[11px] font-semibold uppercase tracking-wide whitespace-nowrap transition-colors ${
                   activeSection === item.id
                     ? isScrolled ? 'text-primary' : 'text-white'
                     : isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/85 hover:text-white'
@@ -88,10 +88,10 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-3 flex-shrink-0">
             <button
               onClick={toggleLanguage}
-              className={`text-sm font-semibold px-3 py-1 transition-colors ${
+              className={`text-xs font-semibold px-2 py-1 transition-colors ${
                 isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/85 hover:text-white'
               }`}
             >
@@ -100,7 +100,7 @@ export default function Header() {
 
             <button
               onClick={handleBookMeeting}
-              className="hidden md:block px-6 py-2 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-all text-sm"
+              className="hidden md:block px-5 py-2 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-all text-xs whitespace-nowrap"
             >
               {t('header.bookMeeting')}
             </button>

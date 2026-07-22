@@ -71,10 +71,11 @@ export default function ScrollingSection({ items, onItemChange }: ScrollingSecti
           {items.map((item, index) => (
             <div
               key={item.id}
+              id={item.id}
               ref={(el) => {
                 itemRefs.current[index] = el;
               }}
-              className="min-h-screen flex items-center px-6 sm:px-8 lg:px-12 py-12"
+              className="min-h-screen flex items-center px-6 sm:px-8 lg:px-12 py-12 scroll-mt-20"
             >
               <div className="w-full max-w-xl">
                 <span className="text-sm font-semibold text-primary uppercase tracking-wider">

@@ -1,0 +1,338 @@
+{
+  "header": {
+    "forRetailers": "For Retailers",
+    "forDrsOperators": "For DRS Operators",
+    "forHousingCooperatives": "For Housing Cooperatives",
+    "forEducationalInstitutions": "For Educational Institutions",
+    "forMunicipalities": "For Municipalities",
+    "about": "About",
+    "solutions": "Solutions",
+    "rvms": "RVMs",
+    "technology": "Technology",
+    "moreAboutUs": "More About Us",
+    "faq": "FAQ",
+    "bookMeeting": "Book a Meeting",
+    "language": "EN"
+  },
+  "hero": {
+    "eyebrow": "CONNECTED RETURN INFRASTRUCTURE FOR POLAND",
+    "headline": "Make every return point work better.",
+    "supporting": "Connected reverse vending machines, operational technology and flexible deployment solutions for retailers, DRS operators, housing cooperatives, educational institutions and municipalities.",
+    "description": "Retearn combines AI, real-time computer vision, QR-based tracking, connected devices and actionable material data within its circular-infrastructure technology.",
+    "primaryCta": "Book a 30-minute meeting",
+    "secondaryCta": "Find your solution",
+    "trustLine": "A Recykal Venture",
+    "trustPoints": ["AI and computer vision", "Connected monitoring", "Customisable configurations"]
+  },
+  "audiences": {
+    "heading": "Where do you want to improve container returns?",
+    "retailers": {
+      "title": "Retailers",
+      "description": "Reduce staff handling and keep returns moving."
+    },
+    "drsOperators": {
+      "title": "DRS Operators",
+      "description": "Manage connected return infrastructure at scale."
+    },
+    "housingCooperatives": {
+      "title": "Housing Cooperatives",
+      "description": "Bring return points closer to residents."
+    },
+    "educationalInstitutions": {
+      "title": "Educational Institutions",
+      "description": "Combine convenient returns with measurable participation."
+    },
+    "municipalities": {
+      "title": "Municipalities",
+      "description": "Build accessible return points beyond traditional retail."
+    }
+  },
+  "retailers": {
+    "sectionLabel": "FOR RETAILERS",
+    "headline": "Keep returns moving without slowing down your store.",
+    "painPoint": "Retailers must balance limited floor space, storage capacity, customer queues, machine availability, employee workload and deposit settlement. Polish consumers identify RVM malfunctions as one of the main reasons that could discourage them from returning containers. Voucher processing can also add another checkout step and contribute to longer queues. Smaller retailers may also lack enough space to operate their own collection point.",
+    "solutionHeadline": "A return point designed around your store—not the other way around.",
+    "solutions": [
+      {
+        "title": "Right-size machine",
+        "description": "Select an RVM based on available space, expected daily returns and storage requirements."
+      },
+      {
+        "title": "Reduce manual handling",
+        "description": "Automate container recognition, counting and eligible-package acceptance."
+      },
+      {
+        "title": "Stay ahead of full machines",
+        "description": "Use remote monitoring and fill-level alerts to plan emptying and technical support."
+      },
+      {
+        "title": "Connect the return journey",
+        "description": "Plan operator, reporting, voucher, POS and approved refund integrations around the retailer's existing workflow."
+      }
+    ],
+    "outcomes": ["Less staff interruption", "Better use of available space", "Fewer full-machine surprises", "A simpler customer return experience"],
+    "cta": "Plan your retail return point"
+  },
+  "drsOperators": {
+    "sectionLabel": "FOR DRS OPERATORS",
+    "headline": "Scale return infrastructure without losing operational control.",
+    "painPoint": "Polish operators must expand collection access, achieve regulated collection levels, coordinate logistics, reconcile deposits and maintain accurate records across different retailers and return formats. Poland requires collection rates of 77% from 2025 and 90% from 2029. RVMs already process 87% of returned containers in Poland, making machine availability, connected data and network reliability essential to system performance.",
+    "solutionHeadline": "One connected view across different return-point formats.",
+    "solutions": [
+      {
+        "title": "Flexible machine network",
+        "description": "Combine compact retail RVMs with high-capacity machines based on location and return volume."
+      },
+      {
+        "title": "Central monitoring",
+        "description": "Track machine status, fill levels, usage and operational alerts across connected locations."
+      },
+      {
+        "title": "Data and reporting",
+        "description": "Create structured return data for operational analysis, reconciliation and performance reporting."
+      },
+      {
+        "title": "Integration-ready approach",
+        "description": "Plan packaging-database, retailer, refund and operator integrations around the required system architecture."
+      }
+    ],
+    "outcomes": ["Greater network visibility", "Faster operational response", "Better capacity planning", "Scalable return-point deployment"],
+    "cta": "Discuss your operator network"
+  },
+  "housingCooperatives": {
+    "sectionLabel": "FOR HOUSING COOPERATIVES",
+    "headline": "Make returns more convenient for the people who live there.",
+    "painPoint": "Residents are discouraged when return points are too far away, machines are unavailable or empty bottles must be stored at home for too long. Housing estates were the most requested non-retail location for an RVM, selected by 51% of respondents in consumer research.",
+    "solutionHeadline": "A shared return point close to residents' everyday routines.",
+    "solutions": [
+      {
+        "title": "Convenient local access",
+        "description": "Place a shared return point within or near a residential estate."
+      },
+      {
+        "title": "Compact configuration",
+        "description": "Select an indoor or protected configuration based on space, access and expected volume."
+      },
+      {
+        "title": "Connected operations",
+        "description": "Monitor fill levels and machine status without relying on residents to report every issue."
+      },
+      {
+        "title": "Flexible community model",
+        "description": "Configure the return and deposit process with the selected licensed operator and participating partners."
+      }
+    ],
+    "outcomes": ["Shorter journey to return containers", "Less container storage inside homes", "Cleaner shared spaces", "Visible community participation"],
+    "cta": "Discuss a housing-estate pilot"
+  },
+  "educationalInstitutions": {
+    "sectionLabel": "FOR EDUCATIONAL INSTITUTIONS",
+    "headline": "Turn everyday container returns into visible participation.",
+    "painPoint": "Schools, colleges, universities and student residences need a system that is easy to understand, simple to maintain and useful for both operations and environmental education. Schools and colleges were among the locations Polish consumers identified for convenient RVM access.",
+    "solutionHeadline": "A practical return point with an educational purpose.",
+    "solutions": [
+      {
+        "title": "Campus return point",
+        "description": "Provide convenient access for students, employees and visitors."
+      },
+      {
+        "title": "Simple user guidance",
+        "description": "Use clear Polish instructions showing eligible packaging and the correct return process."
+      },
+      {
+        "title": "Measurable impact",
+        "description": "Display container counts, participation data and location-level performance."
+      },
+      {
+        "title": "Engagement programmes",
+        "description": "Support campus challenges, environmental campaigns or institution-approved donation and reward programmes."
+      }
+    ],
+    "outcomes": ["Cleaner campus areas", "Practical environmental learning", "Measurable student participation", "Better visibility for sustainability initiatives"],
+    "cta": "Plan a school or campus programme"
+  },
+  "municipalities": {
+    "sectionLabel": "FOR MUNICIPALITIES",
+    "headline": "Bring convenient return infrastructure into public life.",
+    "painPoint": "Municipalities need accessible locations, reliable equipment, clean surroundings, operational visibility and infrastructure that can respond to different neighbourhood and seasonal needs. Poland requires at least one stationary return point in every municipality and permits collection points outside shops.",
+    "solutionHeadline": "Connected return points for communities, transport locations and public spaces.",
+    "solutions": [
+      {
+        "title": "Location planning",
+        "description": "Evaluate residential areas, transport points, parks, tourist zones and public institutions."
+      },
+      {
+        "title": "Public-space configurations",
+        "description": "Plan protected or outdoor installations according to environment and expected usage."
+      },
+      {
+        "title": "Operational dashboard",
+        "description": "Monitor machine activity, fill levels and service requirements across different locations."
+      },
+      {
+        "title": "Managed deployment planning",
+        "description": "Coordinate technology, licensed-operator requirements, servicing and collection arrangements through an agreed partner model."
+      }
+    ],
+    "outcomes": ["More accessible return locations", "Better visibility across public machines", "Cleaner public spaces", "Data for programme and infrastructure planning"],
+    "cta": "Plan a municipal return network"
+  },
+  "solutions": {
+    "sectionLabel": "SOLUTIONS",
+    "heading": "One return platform, configured around your location.",
+    "supporting": "The right return system depends on the people using it, available space, expected volume, collection frequency, refund process and operating responsibilities.",
+    "services": [
+      {
+        "title": "Assess",
+        "description": "Understand the location, available footprint, expected volume and user journey."
+      },
+      {
+        "title": "Configure",
+        "description": "Select the machine format, capacity, interface and accepted material streams."
+      },
+      {
+        "title": "Connect",
+        "description": "Plan the required operator, software, reporting, POS and refund integrations."
+      },
+      {
+        "title": "Operate",
+        "description": "Define monitoring, maintenance, collection and escalation responsibilities."
+      }
+    ],
+    "disclaimer": "Services may be provided directly by Retearn or through approved local and system partners, depending on deployment scope.",
+    "cta": "Build your deployment plan"
+  },
+  "rvms": {
+    "heading": "A machine format for different return volumes.",
+    "products": [
+      {
+        "name": "Reklaim Ace",
+        "subtitle": "Compact retail RVM",
+        "description": "Designed for convenience stores, forecourts and locations with limited space.",
+        "specs": [
+          "Designed for up to 1,000 daily container returns",
+          "Compact back-of-house footprint",
+          "Touchscreen interaction",
+          "Remote fill-level monitoring"
+        ],
+        "cta": "Explore Reklaim Ace"
+      },
+      {
+        "name": "Reklaim Bulk",
+        "subtitle": "High-capacity RVM",
+        "description": "Designed for large retailers, high-volume return points and operator-led collection locations.",
+        "specs": [
+          "Designed for more than 1,500 containers per day",
+          "Higher internal storage capacity",
+          "Fewer collection runs",
+          "Integrated operational reporting"
+        ],
+        "cta": "Explore Reklaim Bulk"
+      }
+    ],
+    "disclaimer": "The current public certification claims on Retearn's website relate to the UK DRS. The Poland page must not describe either machine as 'Poland-certified' until Polish operator, technical and compliance requirements have been formally confirmed.",
+    "sharedCta": "Get an RVM recommendation"
+  },
+  "technology": {
+    "heading": "Intelligence behind every return.",
+    "blocks": [
+      {
+        "title": "Recognise",
+        "description": "AI and real-time computer vision analyse container and material attributes."
+      },
+      {
+        "title": "Track",
+        "description": "QR and barcode-based workflows support material identification and traceability."
+      },
+      {
+        "title": "Connect",
+        "description": "Connected devices generate machine and operational data across return locations."
+      },
+      {
+        "title": "Improve",
+        "description": "Actionable insights help organisations understand activity, status and operational requirements."
+      }
+    ],
+    "cta": "See the technology in a meeting"
+  },
+  "about": {
+    "heading": "Circular infrastructure built beyond the machine.",
+    "copy": "Retearn is a Recykal venture developing connected technology for material collection, identification, tracking and recovery. Our goal is to create adaptable infrastructure that helps organisations move valuable materials back into circulation through reliable physical devices and digital systems.",
+    "proofPoints": [
+      {
+        "title": "Part of Recykal",
+        "description": "Built on experience across circular-economy technology and material-management systems."
+      },
+      {
+        "title": "Technology-led",
+        "description": "AI, computer vision, connected devices and data-driven infrastructure."
+      },
+      {
+        "title": "Configurable",
+        "description": "Solutions developed for different locations, operating models and return volumes."
+      }
+    ],
+    "cta": "Meet the Retearn team"
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "questions": [
+      {
+        "q": "Which RVM is suitable for our location?",
+        "a": "The recommendation depends on available space, expected daily return volume, container types, user traffic, storage capacity and collection frequency. Retearn will review these factors during the first meeting."
+      },
+      {
+        "q": "Can Retearn machines be used for Poland's DRS?",
+        "a": "The required recognition, operator, refund, reporting and compliance configuration must be confirmed for the selected Polish operator and deployment model. This will be assessed during technical discovery."
+      },
+      {
+        "q": "Can the machine connect with our operator or POS system?",
+        "a": "Integration depends on the operator, retailer infrastructure, packaging database and refund process. Retearn will map the required interfaces before proposing a final configuration."
+      },
+      {
+        "q": "Can a return point be installed outside a retail store?",
+        "a": "Polish rules permit collection points outside retail premises. The practical configuration will depend on the location, operator agreement, accessibility, security, weather protection and servicing model."
+      },
+      {
+        "q": "Can we start with a pilot?",
+        "a": "Yes. A pilot can be planned around a limited number of locations, defined machine requirements and agreed success measures."
+      },
+      {
+        "q": "What will happen during the first meeting?",
+        "a": "The team will discuss your organisation, target locations, estimated return volumes, operational challenges, integration requirements and recommended next steps."
+      }
+    ]
+  },
+  "form": {
+    "heading": "Let's plan the right return solution for your locations.",
+    "supporting": "Tell us what you are trying to achieve. We will use the information to make the first conversation specific to your organisation and return-point requirements.",
+    "fields": {
+      "fullName": "Full Name",
+      "workEmail": "Work Email",
+      "phone": "Phone Number",
+      "organisation": "Organisation",
+      "role": "Role",
+      "audienceType": "Audience Type",
+      "locations": "Number of Locations",
+      "timeline": "Expected Project Timeline",
+      "message": "Message"
+    },
+    "audienceOptions": [
+      "Retailer",
+      "DRS Operator",
+      "Housing Cooperative",
+      "Educational Institution",
+      "Municipality",
+      "Technology or Service Partner",
+      "Other"
+    ],
+    "submit": "Choose a meeting time",
+    "reassurance": "A focused 30-minute discussion about your locations, return volumes, machine options and deployment requirements."
+  },
+  "footer": {
+    "copyright": "© 2024 Retearn. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact"
+  }
+}

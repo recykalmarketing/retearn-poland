@@ -1,0 +1,338 @@
+{
+  "header": {
+    "forRetailers": "Dla Detalistów",
+    "forDrsOperators": "Dla Operatorów DRS",
+    "forHousingCooperatives": "Dla Spółdzielni Mieszkaniowych",
+    "forEducationalInstitutions": "Dla Instytucji Edukacyjnych",
+    "forMunicipalities": "Dla Gmin",
+    "about": "O nas",
+    "solutions": "Rozwiązania",
+    "rvms": "Automaty",
+    "technology": "Technologia",
+    "moreAboutUs": "Więcej o nas",
+    "faq": "FAQ",
+    "bookMeeting": "Umów spotkanie",
+    "language": "PL"
+  },
+  "hero": {
+    "eyebrow": "POWIĄZANA INFRASTRUKTURA ZWROTU DLA POLSKI",
+    "headline": "Sprawź każdy punkt zwrotu.",
+    "supporting": "Powiązane automaty do zwrotu opakowań, technologia operacyjna i elastyczne rozwiązania wdrażania dla detalistów, operatorów DRS, spółdzielni mieszkaniowych, instytucji edukacyjnych i gmin.",
+    "description": "Retearn łączy sztuczną inteligencję, wizję komputerową w czasie rzeczywistym, śledzenie oparte na kodach QR, urządzenia połączone i możliwe do działania dane materiałowe w ramach technologii infrastruktury kołowej.",
+    "primaryCta": "Umów 30-minutowe spotkanie",
+    "secondaryCta": "Znajdź swoje rozwiązanie",
+    "trustLine": "Venture Recykal",
+    "trustPoints": ["AI i wizja komputerowa", "Monitorowanie połączone", "Konfiguracje dostosowalne"]
+  },
+  "audiences": {
+    "heading": "Gdzie chcesz poprawić zwrot opakowań?",
+    "retailers": {
+      "title": "Detaliści",
+      "description": "Zmniejsz ręczną obsługę i utrzymaj zwroty w ruchu."
+    },
+    "drsOperators": {
+      "title": "Operatorzy DRS",
+      "description": "Zarządzaj powiązaną infrastrukturą zwrotu w skali."
+    },
+    "housingCooperatives": {
+      "title": "Spółdzielnie Mieszkaniowe",
+      "description": "Zbliż punkty zwrotu do mieszkańców."
+    },
+    "educationalInstitutions": {
+      "title": "Instytucje Edukacyjne",
+      "description": "Połącz wygodne zwroty z mierzalnym udziałem."
+    },
+    "municipalities": {
+      "title": "Gminy",
+      "description": "Zbuduj dostępne punkty zwrotu poza tradycyjnym handlem detalicznym."
+    }
+  },
+  "retailers": {
+    "sectionLabel": "DLA DETALISTÓW",
+    "headline": "Utrzymuj zwroty w ruchu bez spowolnienia sklepu.",
+    "painPoint": "Detaliści muszą utrzymać równowagę między ograniczoną powierzchnią podłogi, pojemnością magazynu, kolejkami klientów, dostępnością maszyn, obciążeniem pracowników i rozliczeniami depozytów. Polscy konsumenci identyfikują awarie automatów zwrotu jako jeden z głównych powodów, które mogą je zniechęcić do zwrotu opakowań. Przetwarzanie voucherów może również dodać kolejny krok w kasie i przyczynić się do dłuższych kolejek.",
+    "solutionHeadline": "Punkt zwrotu zaprojektowany wokół Twojego sklepu, a nie na odwrót.",
+    "solutions": [
+      {
+        "title": "Automat dostosowanego rozmiaru",
+        "description": "Wybierz automat zwrotu na podstawie dostępnej przestrzeni, spodziewanego dziennego zwrotu i wymagań magazynowania."
+      },
+      {
+        "title": "Zmniejsz ręczną obsługę",
+        "description": "Zautomatyzuj rozpoznawanie opakowań, liczenie i akceptację uprawnionych pakietów."
+      },
+      {
+        "title": "Wyprzedź pełne automaty",
+        "description": "Użyj monitorowania zdalnego i alertów poziomu wypełnienia, aby zaplanować opróżnianie i wsparcie techniczne."
+      },
+      {
+        "title": "Połącz podróż zwrotu",
+        "description": "Zaplanuj integracje operatora, raportowania, vouchera, POS i zatwierdzonego zwrotu wokół istniejącego przepływu pracy detalisty."
+      }
+    ],
+    "outcomes": ["Mniejsze przerwania pracy pracowników", "Lepsza wykorzystanie dostępnej przestrzeni", "Mniej niespodzianek z pełnymi automatami", "Prostsza obsługa zwrotu klienta"],
+    "cta": "Zaplanuj punkt zwrotu dla detalisty"
+  },
+  "drsOperators": {
+    "sectionLabel": "DLA OPERATORÓW DRS",
+    "headline": "Skaluj infrastrukturę zwrotu bez utraty kontroli operacyjnej.",
+    "painPoint": "Polscy operatorzy muszą rozszerzyć dostęp do kolekcji, osiągnąć regulacyjne poziomy zbierania, koordynować logistykę, uzgadniać depozyty i prowadzić dokładne rejestry u różnych detalistów i formatów zwrotu. Polska wymaga wskaźników zbioru 77% od 2025 r. i 90% od 2029 r. Automaty zwrotu już przetwarzają 87% zwróconych opakowań w Polsce, czyniąc dostępność maszyn, połączone dane i niezawodność sieci niezbędne dla wydajności systemu.",
+    "solutionHeadline": "Jeden połączony widok różnych formatów punktów zwrotu.",
+    "solutions": [
+      {
+        "title": "Elastyczna sieć automatów",
+        "description": "Łącz kompaktowe automaty detaliczne z maszynami o dużej pojemności na podstawie lokalizacji i objętości zwrotu."
+      },
+      {
+        "title": "Monitorowanie centralne",
+        "description": "Śledź stan maszyny, poziomy wypełnienia, użycie i alerty operacyjne w połączonych lokalizacjach."
+      },
+      {
+        "title": "Raportowanie danych",
+        "description": "Utwórz ustrukturyzowane dane zwrotu do analizy operacyjnej, uzgadniania i raportowania wydajności."
+      },
+      {
+        "title": "Podejście gotowe do integracji",
+        "description": "Zaplanuj integracje bazy danych opakowań, detalisty, zwrotu i operatora wokół wymaganej architektury systemu."
+      }
+    ],
+    "outcomes": ["Większa widoczność sieci", "Szybsza odpowiedź operacyjna", "Lepsza planowanie zdolności", "Skalowalne wdrażanie punktów zwrotu"],
+    "cta": "Omów swoją sieć operatora"
+  },
+  "housingCooperatives": {
+    "sectionLabel": "DLA SPÓŁDZIELNI MIESZKANIOWYCH",
+    "headline": "Ułatw zwrot opakowań dla mieszkańców.",
+    "painPoint": "Mieszkańcy są zniechęceni, gdy punkty zwrotu są zbyt daleko, automaty są niedostępne lub puste butelki muszą być przechowywane w domu zbyt długo. Osiedla mieszkaniowe były najczęściej wymienianą lokalizacją poza handlem detalicznym dla automatu zwrotu, wybraną przez 51% respondentów.",
+    "solutionHeadline": "Wspólny punkt zwrotu blisko codziennych rutyn mieszkańców.",
+    "solutions": [
+      {
+        "title": "Wygodny dostęp lokalny",
+        "description": "Umieść wspólny punkt zwrotu w osiedlu mieszkaniowym lub w jego pobliżu."
+      },
+      {
+        "title": "Kompaktowa konfiguracja",
+        "description": "Wybierz konfigurację wewnętrzną lub chronioną na podstawie przestrzeni, dostępu i spodziewanego wolumenu."
+      },
+      {
+        "title": "Operacje połączone",
+        "description": "Monitoruj poziomy wypełnienia i stan maszyny bez polegania na mieszkańcach do zgłaszania każdego problemu."
+      },
+      {
+        "title": "Elastyczny model wspólnoty",
+        "description": "Skonfiguruj proces zwrotu i depozytu z wybranym licencjonowanym operatorem i uczestniczącymi partnerami."
+      }
+    ],
+    "outcomes": ["Krótsza droga do zwrotu opakowań", "Mniej przechowywania opakowań w domach", "Czystsze powierzchnie wspólne", "Widoczny udział wspólnoty"],
+    "cta": "Omów pilotaż osiedla mieszkaniowego"
+  },
+  "educationalInstitutions": {
+    "sectionLabel": "DLA INSTYTUCJI EDUKACYJNYCH",
+    "headline": "Zmień codzienne zwroty opakowań w widoczny udział.",
+    "painPoint": "Szkoły, colleges, uniwersytety i akademiki potrzebują systemu, który jest łatwy do zrozumienia, prosty w utrzymaniu i użyteczny zarówno do operacji, jak i edukacji środowiskowej. Szkoły i college'i były wśród lokalizacji, które polscy konsumenci określili jako wygodne dla dostępu do automatu zwrotu.",
+    "solutionHeadline": "Praktyczny punkt zwrotu z celami edukacyjnymi.",
+    "solutions": [
+      {
+        "title": "Punkt zwrotu na terenie kampusu",
+        "description": "Zapewnij wygodny dostęp dla studentów, pracowników i odwiedzających."
+      },
+      {
+        "title": "Proste wskazówki użytkownika",
+        "description": "Używaj jasnych polskich instrukcji pokazujących uprawnione opakowania i prawidłowy proces zwrotu."
+      },
+      {
+        "title": "Mierzalny wpływ",
+        "description": "Wyświetlaj liczby opakowań, dane udziału i wydajność na poziomie lokalizacji."
+      },
+      {
+        "title": "Programy zaangażowania",
+        "description": "Wspieraj wyzwania kampusowe, kampanie środowiskowe lub zatwierdzone przez instytucję programy donacji i nagród."
+      }
+    ],
+    "outcomes": ["Czystsze obszary kampusu", "Praktyczne nauczanie środowiskowe", "Mierzalny udział studentów", "Lepsza widoczność inicjatyw zrównoważonego rozwoju"],
+    "cta": "Zaplanuj program szkolny lub kampusowy"
+  },
+  "municipalities": {
+    "sectionLabel": "DLA GMIN",
+    "headline": "Wprowadź wygodną infrastrukturę zwrotu do życia publicznego.",
+    "painPoint": "Gminy potrzebują dostępnych lokalizacji, niezawodnego sprzętu, czystych otoczenia, widoczności operacyjnej i infrastruktury, która może reagować na różne potrzeby sąsiedztwa i sezonu. Polska wymaga co najmniej jednego stacjonarnego punktu zwrotu w każdej gminie i pozwala na punkty zbioru poza sklepami.",
+    "solutionHeadline": "Powiązane punkty zwrotu dla społeczności, lokalizacji transportu i przestrzeni publicznych.",
+    "solutions": [
+      {
+        "title": "Planowanie lokalizacji",
+        "description": "Oceń obszary mieszkaniowe, punkty transportu, parki, strefy turystyczne i instytucje publiczne."
+      },
+      {
+        "title": "Konfiguracje przestrzeni publicznych",
+        "description": "Zaplanuj instalacje chronione lub na otwartym powietrzu zgodnie ze środowiskiem i spodziewanym użytkowaniem."
+      },
+      {
+        "title": "Dashboard operacyjny",
+        "description": "Monitoruj aktywność maszyny, poziomy wypełnienia i wymagania serwisowe w różnych lokalizacjach."
+      },
+      {
+        "title": "Zarządzane planowanie wdrażania",
+        "description": "Skoordynuj technologię, wymagania licencjonowanego operatora, serwisowanie i umowy dotyczące kolekcji przez uzgodniony model partnerstwa."
+      }
+    ],
+    "outcomes": ["Więcej dostępnych lokalizacji zwrotu", "Lepsza widoczność maszyn publicznych", "Czystsze przestrzenie publiczne", "Dane do planowania programu i infrastruktury"],
+    "cta": "Zaplanuj sieć zwrotu dla gminy"
+  },
+  "solutions": {
+    "sectionLabel": "ROZWIĄZANIA",
+    "heading": "Jedna platforma zwrotu, skonfigurowana wokół Twojej lokalizacji.",
+    "supporting": "Prawidłowe rozwiązanie zwrotu zależy od osób je używających, dostępnej przestrzeni, spodziewanego wolumenu, częstotliwości zbioru, procesu zwrotu i obowiązków operacyjnych.",
+    "services": [
+      {
+        "title": "Ocena",
+        "description": "Zrozum lokalizację, dostępne miejsce, spodziewany wolumin i podróż użytkownika."
+      },
+      {
+        "title": "Konfiguracja",
+        "description": "Wybierz format maszyny, pojemność, interfejs i akceptowane strumienie materiałów."
+      },
+      {
+        "title": "Połączenie",
+        "description": "Zaplanuj wymagane integracje operatora, oprogramowania, raportowania i zwrotu."
+      },
+      {
+        "title": "Operacja",
+        "description": "Zdefiniuj odpowiedzialność za monitorowanie, konserwację, zbiór i eskalację."
+      }
+    ],
+    "disclaimer": "Usługi mogą być świadczone bezpośrednio przez Retearn lub poprzez zatwierdzonych partnerów lokalnych i systemowych, w zależności od zakresu wdrożenia.",
+    "cta": "Zbuduj plan wdrożenia"
+  },
+  "rvms": {
+    "heading": "Format maszyny dla różnych wolumenów zwrotu.",
+    "products": [
+      {
+        "name": "Reklaim Ace",
+        "subtitle": "Kompaktowy automat detaliczny",
+        "description": "Zaprojektowany dla sklepów convenience, stacji paliw i lokalizacji z ograniczoną przestrzenią.",
+        "specs": [
+          "Zaprojektowany na maksymalnie 1000 zwrotów dziennie",
+          "Kompaktowe miejsce z tyłu",
+          "Interakcja ekranowa",
+          "Zdalne monitorowanie poziomu wypełnienia"
+        ],
+        "cta": "Przeglądaj Reklaim Ace"
+      },
+      {
+        "name": "Reklaim Bulk",
+        "subtitle": "Automat o dużej pojemności",
+        "description": "Zaprojektowany dla dużych detalistów, punktów zwrotu o dużym wolumenie i operacyjnych lokalizacji zbioru.",
+        "specs": [
+          "Zaprojektowany na ponad 1500 opakowań dziennie",
+          "Większa pojemność wewnętrzna",
+          "Mniej przejazd zbioru",
+          "Zintegrowane raportowanie operacyjne"
+        ],
+        "cta": "Przeglądaj Reklaim Bulk"
+      }
+    ],
+    "disclaimer": "Bieżące publiczne roszczenia dotyczące certyfikacji na stronie internetowej Retearn odnoszą się do DRS w Wielkiej Brytanii. Strona Polski nie powinna opisywać żadnej maszyny jako 'certyfikowanej dla Polski' do czasu formalnego potwierdzenia wymagań operatora, technicznych i zgodności dla Polski.",
+    "sharedCta": "Uzyskaj rekomendację automatu"
+  },
+  "technology": {
+    "heading": "Inteligencja za każdym zwrotem.",
+    "blocks": [
+      {
+        "title": "Rozpoznaj",
+        "description": "AI i wizja komputerowa w czasie rzeczywistym analizują atrybuty opakowań i materiałów."
+      },
+      {
+        "title": "Śledź",
+        "description": "Przepływy pracy oparte na kodach QR i kodach kreskowych wspierają identyfikację materiałów i śledzenie."
+      },
+      {
+        "title": "Połącz",
+        "description": "Urządzenia połączone generują dane maszyn i operacyjne w lokalizacjach zwrotu."
+      },
+      {
+        "title": "Polepszaj",
+        "description": "Możliwe do działania spostrzeżenia pomagają organizacjom zrozumieć aktywność, stan i wymagania operacyjne."
+      }
+    ],
+    "cta": "Zobacz technologię na spotkaniu"
+  },
+  "about": {
+    "heading": "Infrastruktura kołowa zbudowana poza maszyną.",
+    "copy": "Retearn to venture Recykal opracowujący powiązaną technologię do zbierania materiałów, identyfikacji, śledzenia i odzyskiwania. Naszym celem jest stworzenie adaptacyjnej infrastruktury, która pomaga organizacjom przenosić cenne materiały z powrotem do obiegu poprzez niezawodne urządzenia fizyczne i systemy cyfrowe.",
+    "proofPoints": [
+      {
+        "title": "Część Recykal",
+        "description": "Zbudowana na doświadczeniu z technologią gospodarki okrężnej i systemami zarządzania materiałami."
+      },
+      {
+        "title": "Oparta na technologii",
+        "description": "AI, wizja komputerowa, urządzenia połączone i infrastruktura oparta na danych."
+      },
+      {
+        "title": "Konfigurowalna",
+        "description": "Rozwiązania opracowane dla różnych lokalizacji, modeli operacyjnych i wolumenów zwrotu."
+      }
+    ],
+    "cta": "Poznaj zespół Retearn"
+  },
+  "faq": {
+    "heading": "Często Zadawane Pytania",
+    "questions": [
+      {
+        "q": "Który automat jest odpowiedni dla naszej lokalizacji?",
+        "a": "Rekomendacja zależy od dostępnej przestrzeni, spodziewanego dziennego wolumenu zwrotu, typów opakowań, ruchu użytkowników, pojemności magazynu i częstotliwości zbioru. Retearn przeanalizuje te czynniki podczas pierwszego spotkania."
+      },
+      {
+        "q": "Czy automaty Retearn mogą być używane w polskim systemie DRS?",
+        "a": "Wymagana konfiguracja rozpoznawania, operatora, zwrotu, raportowania i zgodności musi być potwierdzona dla wybranego operatora polskiego i modelu wdrożenia. To będzie oceniane podczas odkrywania technicznego."
+      },
+      {
+        "q": "Czy maszyna może się połączyć z naszym operatorem lub systemem POS?",
+        "a": "Integracja zależy od operatora, infrastruktury detalisty, bazy danych opakowań i procesu zwrotu. Retearn zmapuje wymagane interfejsy przed zaproponowaniem ostatecznej konfiguracji."
+      },
+      {
+        "q": "Czy punkt zwrotu można zainstalować poza sklepem detalicznym?",
+        "a": "Polskie zasady zezwalają na punkty zbioru poza lokalami handlowymi. Praktyczna konfiguracja będzie zależy od lokalizacji, umowy z operatorem, dostępności, bezpieczeństwa, ochrony przed pogodą i modelu serwisowania."
+      },
+      {
+        "q": "Czy możemy zacząć od pilotażu?",
+        "a": "Tak. Pilotaż można zaplanować wokół ograniczonej liczby lokalizacji, zdefiniowanych wymagań maszyny i uzgodnionych mierników sukcesu."
+      },
+      {
+        "q": "Co będzie podczas pierwszego spotkania?",
+        "a": "Zespół omówi Twoją organizację, docelowe lokalizacje, szacunkowe wolumeny zwrotu, wyzwania operacyjne, wymagania integracji i zalecane następne kroki."
+      }
+    ]
+  },
+  "form": {
+    "heading": "Zaplanujmy prawidłowe rozwiązanie zwrotu dla Twoich lokalizacji.",
+    "supporting": "Powiedz nam, co chcesz osiągnąć. Użyjemy informacji, aby uczynić pierwszą rozmowę specyficzną dla Twojej organizacji i wymagań punktu zwrotu.",
+    "fields": {
+      "fullName": "Pełne imię i nazwisko",
+      "workEmail": "Służbowy adres e-mail",
+      "phone": "Numer telefonu",
+      "organisation": "Organizacja",
+      "role": "Stanowisko",
+      "audienceType": "Typ Odbiorcy",
+      "locations": "Liczba Lokalizacji",
+      "timeline": "Spodziewany Harmonogram Projektu",
+      "message": "Wiadomość"
+    },
+    "audienceOptions": [
+      "Detalista",
+      "Operator DRS",
+      "Spółdzielnia Mieszkaniowa",
+      "Instytucja Edukacyjna",
+      "Gmina",
+      "Partner Technologii lub Usług",
+      "Inne"
+    ],
+    "submit": "Wybierz czas spotkania",
+    "reassurance": "Skupiona 30-minutowa dyskusja o Twoich lokalizacjach, wolumenach zwrotu, opcjach maszyn i wymaganiach wdrażania."
+  },
+  "footer": {
+    "copyright": "© 2024 Retearn. Wszystkie prawa zastrzeżone.",
+    "privacy": "Polityka prywatności",
+    "terms": "Warunki usługi",
+    "contact": "Kontakt"
+  }
+}

@@ -1,37 +1,58 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import Logo from './Logo';
 
-const navItems = [
+const primaryNavItems = [
   { label: 'rvms', id: 'rvms' },
+];
+
+const audienceItems = [
   { label: 'forRetailers', id: 'retailers' },
   { label: 'forDrsOperators', id: 'drs-operators' },
   { label: 'forHousingCooperatives', id: 'housing-cooperatives' },
   { label: 'forEducationalInstitutions', id: 'educational-institutions' },
   { label: 'forMunicipalities', id: 'municipalities' },
+];
+
+const trailingNavItems = [
   { label: 'technology', id: 'technology' },
   { label: 'faq', id: 'faq' },
 ];
+
+const allNavIds = [...primaryNavItems, ...audienceItems, ...trailingNavItems].map((item) => item.id);
+const audienceIds = audienceItems.map((item) => item.id);
 
 export default function Header() {
   const { t, i18n } = useTranslation();
   const [activeSection, setActiveSection] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showAudienceMenu, setShowAudienceMenu] = useState(false);
+  const audienceMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!showAudienceMenu) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (audienceMenuRef.current && !audienceMenuRef.current.contains(e.target as Node)) {
+        setShowAudienceMenu(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showAudienceMenu]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      const sections = navItems.map(item => item.id);
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
+      for (const id of allNavIds) {
+        const element = document.getElementById(id);
         if (element) {
           const rect = element.getBoundingClientRect();
           if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
+            setActiveSection(id);
             break;
           }
         }
@@ -53,6 +74,7 @@ export default function Header() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMobileMenuOpen(false);
+    setShowAudienceMenu(false);
   };
 
   const handleBookMeeting = () => {
@@ -61,6 +83,13 @@ export default function Header() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const navLinkClass = (id: string) =>
+    `text-[11px] font-semibold uppercase tracking-wide whitespace-nowrap transition-colors ${
+      activeSection === id
+        ? isScrolled ? 'text-primary' : 'text-white'
+        : isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/85 hover:text-white'
+    }`;
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -72,17 +101,42 @@ export default function Header() {
             <Logo className={`h-6 w-auto transition-colors ${isScrolled ? 'text-black' : 'text-white'}`} />
           </a>
 
-          <nav className="hidden lg:flex items-center gap-4 flex-1 min-w-0">
-            {navItems.map((item) => (
+          <nav className="hidden lg:flex items-center gap-5 flex-1">
+            {primaryNavItems.map((item) => (
+              <button key={item.id} onClick={() => handleNavClick(item.id)} className={navLinkClass(item.id)}>
+                {t(`header.${item.label}`)}
+              </button>
+            ))}
+
+            <div
+              className="relative"
+              ref={audienceMenuRef}
+            >
               <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`text-[11px] font-semibold uppercase tracking-wide whitespace-nowrap transition-colors ${
-                  activeSection === item.id
-                    ? isScrolled ? 'text-primary' : 'text-white'
-                    : isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/85 hover:text-white'
-                }`}
+                onClick={() => setShowAudienceMenu((prev) => !prev)}
+                className={navLinkClass(audienceIds.includes(activeSection) ? activeSection : '')}
               >
+                {t('header.forSegments')} ▾
+              </button>
+              {showAudienceMenu && (
+                <div className="absolute top-full left-0 pt-3 w-64">
+                  <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2">
+                    {audienceItems.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => handleNavClick(item.id)}
+                        className="block w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors"
+                      >
+                        {t(`header.${item.label}`)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {trailingNavItems.map((item) => (
+              <button key={item.id} onClick={() => handleNavClick(item.id)} className={navLinkClass(item.id)}>
                 {t(`header.${item.label}`)}
               </button>
             ))}
@@ -118,8 +172,8 @@ export default function Header() {
 
         {isMobileMenuOpen && (
           <div className={`lg:hidden pb-4 ${isScrolled ? 'bg-white' : 'bg-primary-dark/95 backdrop-blur-md rounded-b-2xl'}`}>
-            <nav className="flex flex-col space-y-2 pt-4">
-              {navItems.map((item) => (
+            <nav className="flex flex-col space-y-1 pt-4">
+              {[...primaryNavItems, ...audienceItems, ...trailingNavItems].map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}

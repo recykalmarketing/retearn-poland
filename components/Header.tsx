@@ -5,33 +5,26 @@ import { useTranslation } from 'react-i18next';
 import Logo from './Logo';
 
 const navItems = [
+  { label: 'rvms', id: 'rvms' },
   { label: 'forRetailers', id: 'retailers' },
   { label: 'forDrsOperators', id: 'drs-operators' },
   { label: 'forHousingCooperatives', id: 'housing-cooperatives' },
   { label: 'forEducationalInstitutions', id: 'educational-institutions' },
   { label: 'forMunicipalities', id: 'municipalities' },
-];
-
-const aboutItems = [
-  { label: 'solutions', id: 'solutions' },
-  { label: 'rvms', id: 'rvms' },
   { label: 'technology', id: 'technology' },
-  { label: 'moreAboutUs', id: 'about' },
-];
-
-const otherItems = [
   { label: 'faq', id: 'faq' },
 ];
 
 export default function Header() {
   const { t, i18n } = useTranslation();
   const [activeSection, setActiveSection] = useState('');
-  const [showAboutMenu, setShowAboutMenu] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['retailers', 'drs-operators', 'housing-cooperatives', 'educational-institutions', 'municipalities', 'solutions', 'rvms', 'technology', 'about', 'faq'];
+      setIsScrolled(window.scrollY > 50);
+      const sections = navItems.map(item => item.id);
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -70,66 +63,24 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white border-b border-gray-200">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm' : 'bg-gradient-to-b from-black/40 to-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
+        <div className="flex justify-between items-center h-16">
           <a href="#" className="flex-shrink-0">
             <Logo />
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex flex-1 mx-8 space-x-6">
-            {/* Audience links */}
-            <div className="flex space-x-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`text-sm font-medium transition-colors ${
-                    activeSection === item.id ? 'text-primary border-b-2 border-primary' : 'text-gray-600 hover:text-primary'
-                  }`}
-                >
-                  {t(`header.${item.label}`)}
-                </button>
-              ))}
-            </div>
-
-            {/* About dropdown */}
-            <div className="relative">
-              <button
-                onMouseEnter={() => setShowAboutMenu(true)}
-                onMouseLeave={() => setShowAboutMenu(false)}
-                className="text-sm font-medium text-gray-600 hover:text-primary transition-colors flex items-center"
-              >
-                {t('header.about')} ▾
-              </button>
-              {showAboutMenu && (
-                <div
-                  onMouseEnter={() => setShowAboutMenu(true)}
-                  onMouseLeave={() => setShowAboutMenu(false)}
-                  className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg"
-                >
-                  {aboutItems.map((item) => (
-                    <button
-                      key={item.id}
-                      onClick={() => handleNavClick(item.id)}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-100"
-                    >
-                      {t(`header.${item.label}`)}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* FAQ */}
-            {otherItems.map((item) => (
+          <nav className="hidden lg:flex items-center space-x-8">
+            {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
                 className={`text-sm font-medium transition-colors ${
-                  activeSection === item.id ? 'text-primary border-b-2 border-primary' : 'text-gray-600 hover:text-primary'
+                  activeSection === item.id
+                    ? isScrolled ? 'text-primary' : 'text-white border-b-2 border-white'
+                    : isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/80 hover:text-white'
                 }`}
               >
                 {t(`header.${item.label}`)}
@@ -137,74 +88,49 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right side controls */}
           <div className="flex items-center space-x-4">
-            {/* Language switcher */}
             <button
               onClick={toggleLanguage}
-              className="text-sm font-semibold px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+              className={`text-sm font-semibold px-3 py-1 transition-colors ${
+                isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/80 hover:text-white'
+              }`}
             >
               {i18n.language === 'pl' ? 'EN' : 'PL'}
             </button>
 
-            {/* Book Meeting button */}
             <button
               onClick={handleBookMeeting}
-              className="hidden md:block btn-primary text-sm"
+              className="hidden md:block px-6 py-2 bg-white text-primary font-medium rounded-full hover:bg-gray-100 transition-all text-sm"
             >
               {t('header.bookMeeting')}
             </button>
 
-            {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-gray-100 rounded-lg"
+              className="lg:hidden p-2 transition-colors"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-6 h-6 ${isScrolled ? 'text-gray-600' : 'text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-4 border-t border-gray-200">
+          <div className={`lg:hidden pb-4 ${isScrolled ? 'bg-white' : 'bg-black/80'}`}>
             <nav className="flex flex-col space-y-2 pt-4">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className="text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg"
-                >
-                  {t(`header.${item.label}`)}
-                </button>
-              ))}
-              {aboutItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className="text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg"
-                >
-                  {t(`header.${item.label}`)}
-                </button>
-              ))}
-              {otherItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className="text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg"
+                  className={`text-left px-4 py-2 text-sm transition-colors ${
+                    isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/80 hover:text-white'
+                  }`}
                 >
                   {t(`header.${item.label}`)}
                 </button>
               ))}
             </nav>
-            <button
-              onClick={handleBookMeeting}
-              className="mt-4 w-full mx-4 btn-primary text-sm"
-            >
-              {t('header.bookMeeting')}
-            </button>
           </div>
         )}
       </div>

@@ -26,7 +26,7 @@ if (!i18n.isInitialized) {
 }
 
 export default function Home() {
-  const { t } = useTranslation();
+  useTranslation();
 
   useEffect(() => {
     i18n.changeLanguage('pl');
@@ -39,240 +39,269 @@ export default function Home() {
     }
   };
 
+  const TwoColumnSection = ({ id, eyebrow, title, description, highlights, cta, imageText, isImageRight = false }: any) => (
+    <section id={id} className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left Column - Text */}
+          <div className={isImageRight ? '' : 'order-2 lg:order-1'}>
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">{eyebrow}</span>
+            <h2 className="mt-4 text-4xl font-bold text-gray-900 leading-tight">{title}</h2>
+            <p className="mt-6 text-lg text-gray-600 leading-relaxed">{description}</p>
+            <ul className="mt-8 space-y-4">
+              {highlights.map((item: string, i: number) => (
+                <li key={i} className="flex items-start gap-4">
+                  <span className="text-primary text-2xl font-light mt-1">→</span>
+                  <span className="text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <button onClick={() => handleScroll('book-meeting')} className="mt-10 px-8 py-3 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-all">
+              {cta}
+            </button>
+          </div>
+
+          {/* Right Column - Image */}
+          <div className={isImageRight ? 'order-1 lg:order-2' : ''}>
+            <div className="bg-gradient-to-br from-gray-100 to-gray-200 h-96 rounded-2xl flex items-center justify-center shadow-lg">
+              <span className="text-gray-400 font-medium">{imageText}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
   return (
     <main className="w-full">
-      <Header />
+      <div className="pt-16">
+        <HeroFrames frameCount={463} fps={30} />
+      </div>
 
-      <HeroFrames frameCount={463} fps={30} />
+      {/* RVMs Section */}
+      <section id="rvms" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">OUR SOLUTIONS</span>
+            <h2 className="mt-4 text-4xl font-bold text-gray-900">Choose your RVM.</h2>
+            <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">From compact footprints to high-capacity solutions, we have the right machine for your location.</p>
+          </div>
 
-      <section id="audiences" className="bg-white">
-        <div className="max-w-5xl mx-auto">
-          <h2>Built for every return location.</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {[
-              { title: 'Retailers', desc: 'Simple returns for busy stores.', id: 'retailers' },
-              { title: 'DRS Operators', desc: 'Connected control at scale.', id: 'drs-operators' },
-              { title: 'Housing Cooperatives', desc: 'Returns closer to residents.', id: 'housing-cooperatives' },
-              { title: 'Educational Institutions', desc: 'Better habits across campus.', id: 'educational-institutions' },
-              { title: 'Municipalities', desc: 'Accessible returns for communities.', id: 'municipalities' },
+              {
+                name: 'Reklaim Ace',
+                subtitle: 'Compact Efficiency',
+                desc: 'Perfect for smaller retail spaces and starting locations.',
+                specs: ['200-300 returns per day', 'Compact 2.2m footprint', 'Remote monitoring', 'Fill-level alerts'],
+                features: 'Real-time data', 'Mobile app control'
+              },
+              {
+                name: 'Reklaim Bulk',
+                subtitle: 'Maximum Capacity',
+                desc: 'Engineered for high-volume return centers and network hubs.',
+                specs: ['1000+ returns per day', 'Large storage capacity', 'Fewer collection runs', 'Advanced analytics'],
+                features: 'Fleet management', 'Custom reporting'
+              },
+            ].map((product) => (
+              <div key={product.name} className="border border-gray-200 rounded-2xl p-8 hover:shadow-xl transition-shadow">
+                <div className="bg-gray-100 h-56 rounded-xl mb-8 flex items-center justify-center">
+                  <span className="text-gray-400 text-lg">{product.name} Visual</span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900">{product.name}</h3>
+                <p className="text-primary font-semibold mt-2">{product.subtitle}</p>
+                <p className="text-gray-600 mt-4">{product.desc}</p>
+                <ul className="mt-6 space-y-3">
+                  {product.specs.map((spec) => (
+                    <li key={spec} className="flex items-center gap-3 text-gray-700">
+                      <span className="w-2 h-2 bg-primary rounded-full"></span>
+                      {spec}
+                    </li>
+                  ))}
+                </ul>
+                <button onClick={() => handleScroll('book-meeting')} className="mt-8 w-full py-3 border-2 border-gray-900 text-gray-900 font-medium rounded-full hover:bg-gray-900 hover:text-white transition-all">
+                  Learn More
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Audiences */}
+      <section id="audiences" className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900">Built for every location type.</h2>
+            <p className="mt-4 text-lg text-gray-600">Tailored solutions for your unique return infrastructure needs.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+            {[
+              { title: 'Retailers', desc: 'Drive store foot traffic', icon: '🏬', id: 'retailers' },
+              { title: 'DRS Operators', desc: 'Scale your network', icon: '📊', id: 'drs-operators' },
+              { title: 'Housing', desc: 'Community convenience', icon: '🏘️', id: 'housing-cooperatives' },
+              { title: 'Education', desc: 'Campus sustainability', icon: '🎓', id: 'educational-institutions' },
+              { title: 'Municipalities', desc: 'Public accessibility', icon: '🏛️', id: 'municipalities' },
             ].map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleScroll(item.id)}
-                className="text-left p-4 border border-gray-200 rounded-lg hover:border-primary hover:shadow-sm transition-all"
+                className="p-6 bg-white rounded-2xl text-center hover:shadow-lg hover:-translate-y-2 transition-all group"
               >
-                <h3 className="mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.desc}</p>
+                <div className="text-4xl mb-4">{item.icon}</div>
+                <h3 className="font-bold text-gray-900 group-hover:text-primary transition-colors">{item.title}</h3>
+                <p className="text-sm text-gray-600 mt-2">{item.desc}</p>
               </button>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="retailers" className="bg-white">
-        <div className="max-w-5xl mx-auto">
-          <span className="eyebrow">FOR RETAILERS</span>
-          <h2>Keep returns moving.</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl">Compact, connected RVMs designed around your store.</p>
-          <ul className="highlights">
-            <li>Compact footprint</li>
-            <li>Remote monitoring</li>
-            <li>Simple customer experience</li>
-          </ul>
-          <button className="btn-primary mb-12">Plan a Retail Return Point</button>
-          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">[Retail Store Visual]</div>
-        </div>
-      </section>
+      {/* Retailers Section */}
+      <TwoColumnSection
+        id="retailers"
+        eyebrow="FOR RETAILERS"
+        title="Simplify returns. Drive loyalty."
+        description="Transform your returns experience with compact, connected machines designed to fit seamlessly into any retail environment."
+        highlights={[
+          'Boost customer satisfaction with frictionless returns',
+          'Reduce staff time spent processing returns',
+          'Gain real-time visibility into return patterns',
+          'Increase customer dwell time and basket size'
+        ]}
+        cta="Plan a Retail Pilot"
+        imageText="Retail Environment"
+      />
 
-      <section id="drs-operators" className="bg-white">
-        <div className="max-w-5xl mx-auto">
-          <span className="eyebrow">FOR DRS OPERATORS</span>
-          <h2>Run every location from one connected view.</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl">Monitor machines, returns and capacity across your network.</p>
-          <ul className="highlights">
-            <li>Fleet visibility</li>
-            <li>Return data</li>
-            <li>Flexible deployment</li>
-          </ul>
-          <button className="btn-primary mb-12">Discuss Your Network</button>
-          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">[Network Dashboard Visual]</div>
-        </div>
-      </section>
+      {/* DRS Operators Section */}
+      <TwoColumnSection
+        id="drs-operators"
+        eyebrow="FOR DRS OPERATORS"
+        title="Scale with confidence."
+        description="Manage entire networks from a single dashboard. Monitor machines, returns, and capacity across all your locations in real time."
+        highlights={[
+          'Unified control across multiple locations',
+          'Predictive maintenance and fill-level alerts',
+          'Custom reporting and analytics',
+          'Automated collection route optimization'
+        ]}
+        cta="Discuss Your Scale"
+        imageText="Network Dashboard"
+        isImageRight={true}
+      />
 
-      <section id="housing-cooperatives" className="bg-white">
-        <div className="max-w-5xl mx-auto">
-          <span className="eyebrow">FOR HOUSING COOPERATIVES</span>
-          <h2>Bring returns closer to home.</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl">A convenient shared return point for residents.</p>
-          <ul className="highlights">
-            <li>Local access</li>
-            <li>Compact setup</li>
-            <li>Connected servicing</li>
-          </ul>
-          <button className="btn-primary mb-12">Plan a Housing Pilot</button>
-          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">[Residential Community Visual]</div>
-        </div>
-      </section>
+      {/* Housing Section */}
+      <TwoColumnSection
+        id="housing-cooperatives"
+        eyebrow="FOR HOUSING COOPERATIVES"
+        title="Convenience at your doorstep."
+        description="Bring sustainable returns directly into residential communities. A shared resource that residents appreciate and neighbors value."
+        highlights={[
+          'Compact design for courtyards and common areas',
+          'Reduces packaging waste in residential zones',
+          'Increases community engagement with sustainability',
+          'Low-maintenance, reliable operation 24/7'
+        ]}
+        cta="Plan a Housing Project"
+        imageText="Residential Community"
+      />
 
-      <section id="educational-institutions" className="bg-white">
-        <div className="max-w-5xl mx-auto">
-          <span className="eyebrow">FOR EDUCATIONAL INSTITUTIONS</span>
-          <h2>Make returning a daily habit.</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl">Simple return infrastructure for students, staff and visitors.</p>
-          <ul className="highlights">
-            <li>Easy to use</li>
-            <li>Visible participation</li>
-            <li>Measurable impact</li>
-          </ul>
-          <button className="btn-primary mb-12">Plan a Campus Programme</button>
-          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">[Campus Visual]</div>
-        </div>
-      </section>
+      {/* Educational Section */}
+      <TwoColumnSection
+        id="educational-institutions"
+        eyebrow="FOR EDUCATIONAL INSTITUTIONS"
+        title="Build sustainability culture."
+        description="Make circular practices a daily habit for students and staff. Visible, engaging infrastructure that drives environmental awareness."
+        highlights={[
+          'Encourage student participation in sustainability',
+          'Support institutional environmental commitments',
+          'Generate measurable impact data for reporting',
+          'Accessible returns across campus'
+        ]}
+        cta="Start a Campus Program"
+        imageText="Campus Environment"
+        isImageRight={true}
+      />
 
-      <section id="municipalities" className="bg-white">
-        <div className="max-w-5xl mx-auto">
-          <span className="eyebrow">FOR MUNICIPALITIES</span>
-          <h2>Make returns part of public life.</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl">Connected return points for neighbourhoods and public spaces.</p>
-          <ul className="highlights">
-            <li>Accessible locations</li>
-            <li>Outdoor-ready options</li>
-            <li>Operational visibility</li>
-          </ul>
-          <button className="btn-primary mb-12">Plan a Municipal Network</button>
-          <div className="bg-gray-100 h-80 rounded-lg flex items-center justify-center text-gray-400">[Public Plaza Visual]</div>
-        </div>
-      </section>
+      {/* Municipalities Section */}
+      <TwoColumnSection
+        id="municipalities"
+        eyebrow="FOR MUNICIPALITIES"
+        title="Public infrastructure done right."
+        description="Provide accessible, reliable returns infrastructure in public spaces. Serving neighbors while reducing waste in communities."
+        highlights={[
+          'Accessible returns in high-traffic locations',
+          'Weather-resistant outdoor-ready options',
+          'Community engagement and participation',
+          'Transparent operational reporting'
+        ]}
+        cta="Build a Municipal Network"
+        imageText="Public Space"
+      />
 
-      <section id="solutions" className="bg-white">
-        <div className="max-w-5xl mx-auto">
-          <span className="eyebrow">SOLUTIONS</span>
-          <h2>From location planning to daily operations.</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8 mb-12">
-            {[
-              { title: 'Assess', desc: 'Understand the location and return volume.' },
-              { title: 'Configure', desc: 'Choose the right machine setup.' },
-              { title: 'Connect', desc: 'Integrate machines, data and systems.' },
-              { title: 'Operate', desc: 'Monitor performance and support growth.' },
-            ].map((step) => (
-              <div key={step.title}>
-                <h3>{step.title}</h3>
-                <p className="text-sm text-gray-600">{step.desc}</p>
-              </div>
-            ))}
+      {/* Technology Section */}
+      <section id="technology" className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">TECHNOLOGY</span>
+            <h2 className="mt-4 text-4xl font-bold text-gray-900">Intelligent infrastructure.</h2>
+            <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">Powered by AI and computer vision for fast, reliable material identification.</p>
           </div>
-          <button className="btn-primary">Build Your Return Plan</button>
-        </div>
-      </section>
 
-      <section id="rvms" className="bg-white">
-        <div className="max-w-5xl mx-auto">
-          <span className="eyebrow">OUR RVMS</span>
-          <h2>Choose the right capacity.</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              {
-                name: 'Reklaim Ace',
-                subtitle: 'Compact RVM',
-                desc: 'For smaller stores and lower-volume locations.',
-                specs: ['200-300 returns per day', 'Compact footprint', 'Remote monitoring', 'Fill-level alerts'],
-                cta: 'Explore Reklaim Ace',
-              },
-              {
-                name: 'Reklaim Bulk',
-                subtitle: 'High-Capacity RVM',
-                desc: 'For large retailers and high-volume return points.',
-                specs: ['Built for high return volumes', 'Larger storage capacity', 'Fewer collection runs', 'Connected reporting'],
-                cta: 'Explore Reklaim Bulk',
-              },
-            ].map((product) => (
-              <div key={product.name}>
-                <div className="bg-gray-100 h-48 rounded-lg mb-6 flex items-center justify-center text-gray-400">[{product.name} Image]</div>
-                <h3>{product.name}</h3>
-                <p className="text-sm text-gray-500 mb-4">{product.subtitle}</p>
-                <p className="text-sm text-gray-600 mb-6">{product.desc}</p>
-                <ul className="space-y-2 mb-6">
-                  {product.specs.map((spec) => (
-                    <li key={spec} className="text-sm text-gray-600 flex gap-2">
-                      <span>•</span> {spec}
-                    </li>
-                  ))}
-                </ul>
-                <button className="btn-secondary text-sm">{product.cta}</button>
-              </div>
-            ))}
-          </div>
-          <button className="btn-primary">Get an RVM Recommendation</button>
-        </div>
-      </section>
-
-      <section id="technology" className="bg-white">
-        <div className="max-w-5xl mx-auto">
-          <span className="eyebrow">TECHNOLOGY</span>
-          <h2>Intelligence behind every return.</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8 mb-12">
-            {[
-              { title: 'Recognise', desc: 'Fast container identification.' },
-              { title: 'Track', desc: 'Real-time machine data.' },
-              { title: 'Connect', desc: 'Flexible system integration.' },
-              { title: 'Improve', desc: 'Insights for better operations.' },
+              { title: 'Recognise', desc: 'AI-powered container identification in seconds', icon: '🤖' },
+              { title: 'Track', desc: 'Real-time machine data and performance metrics', icon: '📡' },
+              { title: 'Connect', desc: 'Flexible integration with existing systems', icon: '🔗' },
+              { title: 'Optimize', desc: 'Data-driven insights for better operations', icon: '⚡' },
             ].map((tech) => (
-              <div key={tech.title}>
-                <h3>{tech.title}</h3>
-                <p className="text-sm text-gray-600">{tech.desc}</p>
+              <div key={tech.title} className="bg-white p-8 rounded-2xl text-center">
+                <div className="text-5xl mb-4">{tech.icon}</div>
+                <h3 className="font-bold text-gray-900 text-lg">{tech.title}</h3>
+                <p className="text-gray-600 text-sm mt-4">{tech.desc}</p>
               </div>
             ))}
           </div>
-          <button className="btn-primary">See the Technology</button>
         </div>
       </section>
 
-      <section id="about" className="bg-white">
-        <div className="max-w-5xl mx-auto">
-          <span className="eyebrow">ABOUT RETEARN</span>
-          <h2>Circular infrastructure beyond the machine.</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl">Retearn is a Recykal venture building connected technology for material return and recovery.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {[
-              { title: 'Circular-economy experience', desc: 'Built on experience across circular-economy technology.' },
-              { title: 'AI and computer vision', desc: 'Powered by intelligent material identification.' },
-              { title: 'Configurable solutions', desc: 'Adapted for different locations and operators.' },
-            ].map((point) => (
-              <div key={point.title}>
-                <h3>{point.title}</h3>
-                <p className="text-sm text-gray-600">{point.desc}</p>
-              </div>
-            ))}
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900">Questions? We have answers.</h2>
           </div>
-          <button className="btn-primary">Meet Retearn</button>
-        </div>
-      </section>
 
-      <section id="faq" className="bg-white">
-        <div className="max-w-3xl mx-auto">
-          <h2>Good to know.</h2>
-          <div className="space-y-6 mt-8">
+          <div className="space-y-6">
             {[
-              { q: 'Which RVM is right for our location?', a: 'We recommend a configuration based on space and return volume.' },
-              { q: 'Can Retearn support Poland DRS?', a: 'The deployment is configured around the selected operator and requirements.' },
-              { q: 'Can it connect with our systems?', a: 'Integration options are reviewed before deployment.' },
-              { q: 'Can an RVM be installed outdoors?', a: 'Yes, depending on location and operating requirements.' },
-              { q: 'Can we start with a pilot?', a: 'Yes. We can begin with selected locations.' },
-              { q: 'What happens in the first meeting?', a: 'We discuss your locations, volumes and recommended next steps.' },
+              { q: 'Which RVM is right for my location?', a: 'We assess your space, volume, and goals to recommend the perfect fit. Every location is unique.' },
+              { q: 'How does the AI identification work?', a: 'Our computer vision system recognizes containers in real time. Fast, reliable, and constantly learning.' },
+              { q: 'Can it integrate with my existing systems?', a: 'Yes. We support flexible integrations with your current infrastructure and data platforms.' },
+              { q: 'What about outdoor installation?', a: 'Absolutely. Our machines are built for weather and tested in harsh conditions.' },
+              { q: 'Do you offer pilots?', a: 'Yes. We believe in proof of concept. Start small, scale fast.' },
+              { q: 'What comes next?', a: 'A conversation. We discuss your goals, timeline, and locations. Then we build a plan together.' },
             ].map((item, i) => (
-              <details key={i} className="border-b pb-6">
-                <summary className="font-medium cursor-pointer">{item.q}</summary>
-                <p className="text-gray-600 mt-3 text-sm">{item.a}</p>
+              <details key={i} className="group border-b border-gray-200 pb-6">
+                <summary className="font-semibold text-gray-900 cursor-pointer hover:text-primary transition-colors flex justify-between items-center">
+                  {item.q}
+                  <span className="text-gray-400 group-open:rotate-180 transition-transform">▶</span>
+                </summary>
+                <p className="text-gray-600 mt-4 text-sm leading-relaxed">{item.a}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="book-meeting" className="bg-primary text-white">
-        <div className="max-w-3xl mx-auto">
-          <h2 style={{ color: 'white' }}>Let us plan your return solution.</h2>
-          <p className="text-white/80 mb-8">A focused 30-minute conversation about your locations and requirements.</p>
+      {/* CTA Section */}
+      <section id="book-meeting" className="py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Let us build your return solution.</h2>
+            <p className="text-gray-300 text-lg">A focused conversation about your locations, volumes, and vision.</p>
+          </div>
+
           <form className="space-y-4 mb-8">
             {[
               { label: 'Full Name', name: 'name', type: 'text' },
@@ -285,24 +314,27 @@ export default function Home() {
                 key={field.name}
                 type={field.type}
                 placeholder={field.label}
-                className="text-black"
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors"
                 required
               />
             ))}
-            <select className="text-black" required>
-              <option value="">Select Audience Type</option>
-              <option>Retailer</option>
-              <option>DRS Operator</option>
-              <option>Housing Cooperative</option>
-              <option>Educational Institution</option>
-              <option>Municipality</option>
+            <select className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white rounded-lg focus:outline-none focus:border-white/40 transition-colors">
+              <option className="bg-gray-900" value="">Select Your Sector</option>
+              <option className="bg-gray-900">Retailer</option>
+              <option className="bg-gray-900">DRS Operator</option>
+              <option className="bg-gray-900">Housing Cooperative</option>
+              <option className="bg-gray-900">Educational Institution</option>
+              <option className="bg-gray-900">Municipality</option>
             </select>
-            <input type="number" placeholder="Number of Locations" className="text-black" />
-            <input type="text" placeholder="Project Timeline" className="text-black" />
-            <textarea placeholder="Message" rows={4} className="text-black"></textarea>
-            <button type="submit" className="btn-primary w-full">Choose a Meeting Time</button>
+            <input type="number" placeholder="Number of Locations" className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors" />
+            <input type="text" placeholder="Project Timeline" className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors" />
+            <textarea placeholder="Tell us about your project" rows={4} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors"></textarea>
+            <button type="submit" className="w-full py-4 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-100 transition-all text-lg">
+              Schedule a Conversation
+            </button>
           </form>
-          <p className="text-white/60 text-sm text-center">Practical discussion. Clear next steps.</p>
+
+          <p className="text-gray-400 text-center text-sm">We typically respond within 24 hours on weekdays.</p>
         </div>
       </section>
 

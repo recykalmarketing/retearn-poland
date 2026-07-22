@@ -26,7 +26,7 @@ if (!i18n.isInitialized) {
 }
 
 export default function Home() {
-  useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     i18n.changeLanguage('pl');
@@ -57,7 +57,7 @@ export default function Home() {
               ))}
             </ul>
             <button onClick={() => handleScroll('book-meeting')} className="mt-10 px-8 py-3 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-all">
-              {cta}
+              {t(cta) || cta}
             </button>
           </div>
 
@@ -296,8 +296,8 @@ export default function Home() {
       <section id="book-meeting" className="py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Let us build your return solution.</h2>
-            <p className="text-gray-300 text-lg">A focused conversation about your locations, volumes, and vision.</p>
+            <h2 className="text-4xl font-bold mb-4">{t('cta.heading') || 'Let us build your return solution.'}</h2>
+            <p className="text-gray-300 text-lg">{t('cta.subheading') || 'A focused conversation about your locations, volumes, and vision.'}</p>
           </div>
 
           <form className="space-y-4 mb-8">
@@ -328,11 +328,11 @@ export default function Home() {
             <input type="text" placeholder="Project Timeline" className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors" />
             <textarea placeholder="Tell us about your project" rows={4} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors"></textarea>
             <button type="submit" className="w-full py-4 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-100 transition-all text-lg">
-              Schedule a Conversation
+              {t('cta.submitButton') || 'Schedule a Conversation'}
             </button>
           </form>
 
-          <p className="text-gray-400 text-center text-sm">We typically respond within 24 hours on weekdays.</p>
+          <p className="text-gray-400 text-center text-sm">{t('cta.responseTime') || 'We typically respond within 24 hours on weekdays.'}</p>
         </div>
       </section>
 

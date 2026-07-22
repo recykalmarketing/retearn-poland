@@ -64,12 +64,14 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm' : 'bg-black/30 backdrop-blur-sm'
+      isScrolled ? 'bg-white shadow-sm' : 'bg-black/40'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <a href="#" className="flex-shrink-0">
-            <div className={isScrolled ? 'text-gray-900 font-bold text-xl' : 'text-white font-bold text-xl'}>retearn.pl</div>
+        <div className="flex justify-between items-center h-20">
+          <a href="#" className="flex-shrink-0 flex items-center">
+            <div className={`font-bold text-2xl font-poppins ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
+              retearn.pl
+            </div>
           </a>
 
           <nav className="hidden lg:flex items-center space-x-6">

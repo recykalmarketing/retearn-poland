@@ -48,7 +48,7 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
   }, [frameCount, fps]);
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-400 to-gray-600">
       {/* Frame-based video background */}
       <div
         className="absolute inset-0 w-full h-full bg-center bg-cover"
@@ -60,7 +60,7 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
       />
 
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/35"></div>
+      <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Text Content - Overlay */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">

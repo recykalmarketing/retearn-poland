@@ -94,14 +94,12 @@ export default function Home() {
                 subtitle: 'Compact Efficiency',
                 desc: 'Perfect for smaller retail spaces and starting locations.',
                 specs: ['200-300 returns per day', 'Compact 2.2m footprint', 'Remote monitoring', 'Fill-level alerts'],
-                features: 'Real-time data', 'Mobile app control'
               },
               {
                 name: 'Reklaim Bulk',
                 subtitle: 'Maximum Capacity',
                 desc: 'Engineered for high-volume return centers and network hubs.',
                 specs: ['1000+ returns per day', 'Large storage capacity', 'Fewer collection runs', 'Advanced analytics'],
-                features: 'Fleet management', 'Custom reporting'
               },
             ].map((product) => (
               <div key={product.name} className="border border-gray-200 rounded-2xl p-8 hover:shadow-xl transition-shadow">

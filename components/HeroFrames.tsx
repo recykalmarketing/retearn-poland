@@ -63,11 +63,11 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
       <div className="absolute inset-0 bg-black/35"></div>
 
       {/* Text Content - Overlay */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center text-white">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8 text-white drop-shadow-lg">
           {headline}
         </h1>
-        <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed mb-12">
+        <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed mb-12 drop-shadow-md">
           {subheading}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

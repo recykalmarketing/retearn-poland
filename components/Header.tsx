@@ -64,23 +64,23 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm' : 'bg-gradient-to-b from-black/40 to-transparent'
+      isScrolled ? 'bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm' : 'bg-black/30 backdrop-blur-sm'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <a href="#" className="flex-shrink-0">
-            <Logo />
+            <div className={isScrolled ? 'text-gray-900 font-bold text-xl' : 'text-white font-bold text-xl'}>retearn.pl</div>
           </a>
 
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-xs font-semibold transition-colors uppercase tracking-wide ${
                   activeSection === item.id
-                    ? isScrolled ? 'text-primary' : 'text-white border-b-2 border-white'
-                    : isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/80 hover:text-white'
+                    ? isScrolled ? 'text-primary' : 'text-white'
+                    : isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white hover:text-white/80'
                 }`}
               >
                 {t(`header.${item.label}`)}

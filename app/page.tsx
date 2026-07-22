@@ -1,9 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
 import i18n from 'i18next';
 import { initReactI18next, useTranslation } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 import enTranslations from '@/lib/translations/en.json';
 import plTranslations from '@/lib/translations/pl.json';
 import Header from '@/components/Header';
@@ -11,27 +9,69 @@ import HeroFrames from '@/components/HeroFrames';
 import ScrollingSection from '@/components/ScrollingSection';
 import Footer from '@/components/Footer';
 
+// No browser-based language auto-detection: it resolves differently on the
+// server (no window/navigator) than on the client, which caused a hydration
+// mismatch — the page briefly flashed English then snapped to Polish (or vice
+// versa) on every load. Always boot deterministically in Polish; the header
+// toggle switches language client-side after mount, which is safe.
 if (!i18n.isInitialized) {
   i18n
-    .use(LanguageDetector)
     .use(initReactI18next)
     .init({
       resources: {
         en: { translation: enTranslations },
         pl: { translation: plTranslations },
       },
+      lng: 'pl',
       fallbackLng: 'pl',
-      detection: { order: ['localStorage', 'navigator'], caches: ['localStorage'] },
       interpolation: { escapeValue: false },
     });
 }
 
+interface Product {
+  name: string;
+  subtitle: string;
+  description: string;
+  specs: string[];
+  cta: string;
+}
+
+interface TechBlock {
+  title: string;
+  description: string;
+}
+
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+const audienceIcons: Record<string, string> = {
+  retailers: '🏬',
+  drsOperators: '📊',
+  housingCooperatives: '🏘️',
+  educationalInstitutions: '🎓',
+  municipalities: '🏛️',
+};
+
+const audienceIds: Record<string, string> = {
+  retailers: 'retailers',
+  drsOperators: 'drs-operators',
+  housingCooperatives: 'housing-cooperatives',
+  educationalInstitutions: 'educational-institutions',
+  municipalities: 'municipalities',
+};
+
+const audienceImageText: Record<string, string> = {
+  retailers: 'Retail Environment',
+  drsOperators: 'Network Dashboard',
+  housingCooperatives: 'Residential Community',
+  educationalInstitutions: 'Campus Environment',
+  municipalities: 'Public Space',
+};
+
 export default function Home() {
   const { t } = useTranslation();
-
-  useEffect(() => {
-    i18n.changeLanguage('pl');
-  }, []);
 
   const handleScroll = (id: string) => {
     const element = document.getElementById(id);
@@ -40,41 +80,44 @@ export default function Home() {
     }
   };
 
+  const products = t('rvms.products', { returnObjects: true }) as Product[];
+  const techBlocks = t('technology.blocks', { returnObjects: true }) as TechBlock[];
+  const faqQuestions = t('faq.questions', { returnObjects: true }) as FaqItem[];
+  const audienceOptions = t('form.audienceOptions', { returnObjects: true }) as string[];
+  const audienceKeys = ['retailers', 'drsOperators', 'housingCooperatives', 'educationalInstitutions', 'municipalities'];
+
+  const scrollingItems = audienceKeys.map((key) => ({
+    id: audienceIds[key],
+    eyebrow: t(`${key}.sectionLabel`),
+    title: t(`${key}.headline`),
+    description: t(`${key}.solutionHeadline`),
+    highlights: t(`${key}.outcomes`, { returnObjects: true }) as string[],
+    cta: t(`${key}.cta`),
+    imageText: audienceImageText[key],
+  }));
+
   return (
     <main className="w-full">
+      <Header />
       <HeroFrames frameCount={463} fps={30} />
 
       {/* RVMs Section */}
       <section id="rvms" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">OUR SOLUTIONS</span>
-            <h2 className="mt-4 text-4xl font-bold text-gray-900">Choose your RVM.</h2>
-            <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">From compact footprints to high-capacity solutions, we have the right machine for your location.</p>
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">{t('header.rvms')}</span>
+            <h2 className="mt-4 text-4xl font-bold text-gray-900">{t('rvms.heading')}</h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {[
-              {
-                name: 'Reklaim Ace',
-                subtitle: 'Compact Efficiency',
-                desc: 'Perfect for smaller retail spaces and starting locations.',
-                specs: ['200-300 returns per day', 'Compact 2.2m footprint', 'Remote monitoring', 'Fill-level alerts'],
-              },
-              {
-                name: 'Reklaim Bulk',
-                subtitle: 'Maximum Capacity',
-                desc: 'Engineered for high-volume return centers and network hubs.',
-                specs: ['1000+ returns per day', 'Large storage capacity', 'Fewer collection runs', 'Advanced analytics'],
-              },
-            ].map((product) => (
+            {products.map((product) => (
               <div key={product.name} className="border border-gray-200 rounded-2xl p-8 hover:shadow-xl transition-shadow">
                 <div className="bg-gray-100 h-56 rounded-xl mb-8 flex items-center justify-center">
                   <span className="text-gray-400 text-lg">{product.name} Visual</span>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">{product.name}</h3>
                 <p className="text-primary font-semibold mt-2">{product.subtitle}</p>
-                <p className="text-gray-600 mt-4">{product.desc}</p>
+                <p className="text-gray-600 mt-4">{product.description}</p>
                 <ul className="mt-6 space-y-3">
                   {product.specs.map((spec) => (
                     <li key={spec} className="flex items-center gap-3 text-gray-700">
@@ -84,7 +127,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <button onClick={() => handleScroll('book-meeting')} className="mt-8 w-full py-3 bg-white border-2 border-primary text-black font-semibold rounded-full hover:bg-primary hover:text-white transition-all">
-                  Learn More
+                  {product.cta}
                 </button>
               </div>
             ))}
@@ -96,28 +139,21 @@ export default function Home() {
       <section id="audiences" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900">Built for every location type.</h2>
-            <p className="mt-4 text-lg text-gray-600">Tailored solutions for your unique return infrastructure needs.</p>
+            <h2 className="text-4xl font-bold text-gray-900">{t('audiences.heading')}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-            {[
-              { title: 'Retailers', desc: 'Drive store foot traffic', icon: '🏬', id: 'retailers' },
-              { title: 'DRS Operators', desc: 'Scale your network', icon: '📊', id: 'drs-operators' },
-              { title: 'Housing', desc: 'Community convenience', icon: '🏘️', id: 'housing-cooperatives' },
-              { title: 'Education', desc: 'Campus sustainability', icon: '🎓', id: 'educational-institutions' },
-              { title: 'Municipalities', desc: 'Public accessibility', icon: '🏛️', id: 'municipalities' },
-            ].map((item) => (
+            {audienceKeys.map((key) => (
               <button
-                key={item.id}
-                onClick={() => handleScroll(item.id)}
+                key={key}
+                onClick={() => handleScroll(audienceIds[key])}
                 className="p-6 bg-white border border-primary/10 rounded-2xl text-center hover:shadow-lg hover:border-primary/40 hover:-translate-y-2 transition-all group"
               >
                 <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center text-2xl group-hover:bg-primary group-hover:scale-110 transition-all">
-                  {item.icon}
+                  {audienceIcons[key]}
                 </div>
-                <h3 className="font-bold text-gray-900 group-hover:text-primary transition-colors">{item.title}</h3>
-                <p className="text-sm text-gray-600 mt-2">{item.desc}</p>
+                <h3 className="font-bold text-gray-900 group-hover:text-primary transition-colors">{t(`audiences.${key}.title`)}</h3>
+                <p className="text-sm text-gray-600 mt-2">{t(`audiences.${key}.description`)}</p>
               </button>
             ))}
           </div>
@@ -125,103 +161,29 @@ export default function Home() {
       </section>
 
       {/* Scrolling Audience Sections */}
-      <ScrollingSection
-        items={[
-          {
-            id: 'retailers',
-            eyebrow: 'FOR RETAILERS',
-            title: 'Simplify returns. Drive loyalty.',
-            description: 'Transform your returns experience with compact, connected machines designed to fit seamlessly into any retail environment.',
-            highlights: [
-              'Boost customer satisfaction with frictionless returns',
-              'Reduce staff time spent processing returns',
-              'Gain real-time visibility into return patterns',
-              'Increase customer dwell time and basket size'
-            ],
-            cta: 'header.bookMeeting',
-            imageText: 'Retail Environment'
-          },
-          {
-            id: 'drs-operators',
-            eyebrow: 'FOR DRS OPERATORS',
-            title: 'Scale with confidence.',
-            description: 'Manage entire networks from a single dashboard. Monitor machines, returns, and capacity across all your locations in real time.',
-            highlights: [
-              'Unified control across multiple locations',
-              'Predictive maintenance and fill-level alerts',
-              'Custom reporting and analytics',
-              'Automated collection route optimization'
-            ],
-            cta: 'header.bookMeeting',
-            imageText: 'Network Dashboard'
-          },
-          {
-            id: 'housing-cooperatives',
-            eyebrow: 'FOR HOUSING COOPERATIVES',
-            title: 'Convenience at your doorstep.',
-            description: 'Bring sustainable returns directly into residential communities. A shared resource that residents appreciate and neighbors value.',
-            highlights: [
-              'Compact design for courtyards and common areas',
-              'Reduces packaging waste in residential zones',
-              'Increases community engagement with sustainability',
-              'Low-maintenance, reliable operation 24/7'
-            ],
-            cta: 'header.bookMeeting',
-            imageText: 'Residential Community'
-          },
-          {
-            id: 'educational-institutions',
-            eyebrow: 'FOR EDUCATIONAL INSTITUTIONS',
-            title: 'Build sustainability culture.',
-            description: 'Make circular practices a daily habit for students and staff. Visible, engaging infrastructure that drives environmental awareness.',
-            highlights: [
-              'Encourage student participation in sustainability',
-              'Support institutional environmental commitments',
-              'Generate measurable impact data for reporting',
-              'Accessible returns across campus'
-            ],
-            cta: 'header.bookMeeting',
-            imageText: 'Campus Environment'
-          },
-          {
-            id: 'municipalities',
-            eyebrow: 'FOR MUNICIPALITIES',
-            title: 'Public infrastructure done right.',
-            description: 'Provide accessible, reliable returns infrastructure in public spaces. Serving neighbors while reducing waste in communities.',
-            highlights: [
-              'Accessible returns in high-traffic locations',
-              'Weather-resistant outdoor-ready options',
-              'Community engagement and participation',
-              'Transparent operational reporting'
-            ],
-            cta: 'header.bookMeeting',
-            imageText: 'Public Space'
-          }
-        ]}
-      />
+      <ScrollingSection items={scrollingItems} />
 
       {/* Technology Section */}
       <section id="technology" className="py-24 bg-primary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">TECHNOLOGY</span>
-            <h2 className="mt-4 text-4xl font-bold text-gray-900">Intelligent infrastructure.</h2>
-            <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">Powered by AI and computer vision for fast, reliable material identification.</p>
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">{t('header.technology')}</span>
+            <h2 className="mt-4 text-4xl font-bold text-gray-900">{t('technology.heading')}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { title: 'Recognise', desc: 'AI-powered container identification in seconds', icon: '🤖' },
-              { title: 'Track', desc: 'Real-time machine data and performance metrics', icon: '📡' },
-              { title: 'Connect', desc: 'Flexible integration with existing systems', icon: '🔗' },
-              { title: 'Optimize', desc: 'Data-driven insights for better operations', icon: '⚡' },
-            ].map((tech) => (
+            {techBlocks.map((tech) => (
               <div key={tech.title} className="bg-white p-8 rounded-2xl text-center border-t-4 border-primary shadow-sm hover:shadow-lg transition-shadow">
-                <div className="text-5xl mb-4">{tech.icon}</div>
                 <h3 className="font-bold text-gray-900 text-lg">{tech.title}</h3>
-                <p className="text-gray-600 text-sm mt-4">{tech.desc}</p>
+                <p className="text-gray-600 text-sm mt-4">{tech.description}</p>
               </div>
             ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <button onClick={() => handleScroll('book-meeting')} className="btn-primary">
+              {t('technology.cta')}
+            </button>
           </div>
         </div>
       </section>
@@ -230,18 +192,11 @@ export default function Home() {
       <section id="faq" className="py-24 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900">Questions? We have answers.</h2>
+            <h2 className="text-4xl font-bold text-gray-900">{t('faq.heading')}</h2>
           </div>
 
           <div className="space-y-6">
-            {[
-              { q: 'Which RVM is right for my location?', a: 'We assess your space, volume, and goals to recommend the perfect fit. Every location is unique.' },
-              { q: 'How does the AI identification work?', a: 'Our computer vision system recognizes containers in real time. Fast, reliable, and constantly learning.' },
-              { q: 'Can it integrate with my existing systems?', a: 'Yes. We support flexible integrations with your current infrastructure and data platforms.' },
-              { q: 'What about outdoor installation?', a: 'Absolutely. Our machines are built for weather and tested in harsh conditions.' },
-              { q: 'Do you offer pilots?', a: 'Yes. We believe in proof of concept. Start small, scale fast.' },
-              { q: 'What comes next?', a: 'A conversation. We discuss your goals, timeline, and locations. Then we build a plan together.' },
-            ].map((item, i) => (
+            {faqQuestions.map((item, i) => (
               <details key={i} className="group border-b border-gray-200 pb-6">
                 <summary className="font-semibold text-gray-900 cursor-pointer hover:text-primary transition-colors flex justify-between items-center">
                   {item.q}
@@ -258,43 +213,31 @@ export default function Home() {
       <section id="book-meeting" className="py-32 bg-gradient-to-br from-primary-dark via-primary to-secondary text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">{t('cta.heading') || 'Let us build your return solution.'}</h2>
-            <p className="text-gray-300 text-lg">{t('cta.subheading') || 'A focused conversation about your locations, volumes, and vision.'}</p>
+            <h2 className="text-4xl font-bold mb-4 text-white">{t('form.heading')}</h2>
+            <p className="text-white/80 text-lg">{t('form.supporting')}</p>
           </div>
 
           <form className="space-y-4 mb-8">
-            {[
-              { label: 'Full Name', name: 'name', type: 'text' },
-              { label: 'Work Email', name: 'email', type: 'email' },
-              { label: 'Phone Number', name: 'phone', type: 'tel' },
-              { label: 'Organisation', name: 'org', type: 'text' },
-              { label: 'Role', name: 'role', type: 'text' },
-            ].map((field) => (
-              <input
-                key={field.name}
-                type={field.type}
-                placeholder={field.label}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors"
-                required
-              />
-            ))}
+            <input type="text" placeholder={t('form.fields.fullName')} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-lg focus:outline-none focus:border-white/40 transition-colors" required />
+            <input type="email" placeholder={t('form.fields.workEmail')} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-lg focus:outline-none focus:border-white/40 transition-colors" required />
+            <input type="tel" placeholder={t('form.fields.phone')} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-lg focus:outline-none focus:border-white/40 transition-colors" required />
+            <input type="text" placeholder={t('form.fields.organisation')} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-lg focus:outline-none focus:border-white/40 transition-colors" required />
+            <input type="text" placeholder={t('form.fields.role')} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-lg focus:outline-none focus:border-white/40 transition-colors" required />
             <select className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white rounded-lg focus:outline-none focus:border-white/40 transition-colors">
-              <option className="bg-primary-dark" value="">Select Your Sector</option>
-              <option className="bg-primary-dark">Retailer</option>
-              <option className="bg-primary-dark">DRS Operator</option>
-              <option className="bg-primary-dark">Housing Cooperative</option>
-              <option className="bg-primary-dark">Educational Institution</option>
-              <option className="bg-primary-dark">Municipality</option>
+              <option className="bg-primary-dark" value="">{t('form.fields.audienceType')}</option>
+              {audienceOptions.map((opt) => (
+                <option key={opt} className="bg-primary-dark">{opt}</option>
+              ))}
             </select>
-            <input type="number" placeholder="Number of Locations" className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors" />
-            <input type="text" placeholder="Project Timeline" className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors" />
-            <textarea placeholder="Tell us about your project" rows={4} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors"></textarea>
+            <input type="number" placeholder={t('form.fields.locations')} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-lg focus:outline-none focus:border-white/40 transition-colors" />
+            <input type="text" placeholder={t('form.fields.timeline')} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-lg focus:outline-none focus:border-white/40 transition-colors" />
+            <textarea placeholder={t('form.fields.message')} rows={4} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-lg focus:outline-none focus:border-white/40 transition-colors"></textarea>
             <button type="submit" className="w-full py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-all text-lg">
-              {t('cta.submitButton') || 'Schedule a Conversation'}
+              {t('form.submit')}
             </button>
           </form>
 
-          <p className="text-gray-400 text-center text-sm">{t('cta.responseTime') || 'We typically respond within 24 hours on weekdays.'}</p>
+          <p className="text-white/70 text-center text-sm">{t('form.reassurance')}</p>
         </div>
       </section>
 

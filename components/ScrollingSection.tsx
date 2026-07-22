@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
 
 interface SectionItem {
   id: string;
@@ -19,7 +18,6 @@ interface ScrollingSectionProps {
 }
 
 export default function ScrollingSection({ items, onItemChange }: ScrollingSectionProps) {
-  const { t } = useTranslation();
   const [activeItem, setActiveItem] = useState(0);
   const [imageOpacity, setImageOpacity] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -100,7 +98,7 @@ export default function ScrollingSection({ items, onItemChange }: ScrollingSecti
                   onClick={handleCTA}
                   className="mt-12 px-8 py-3 bg-white border-2 border-primary text-black font-semibold rounded-full hover:bg-primary hover:text-white transition-all"
                 >
-                  {t(item.cta) || item.cta}
+                  {item.cta}
                 </button>
               </div>
             </div>

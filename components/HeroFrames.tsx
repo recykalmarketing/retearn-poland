@@ -8,11 +8,15 @@ interface HeroFramesProps {
   fps: number;
 }
 
+const framePath = (i: number) => `/videos/frames/frame_${String(i).padStart(4, '0')}.webp`;
+
 export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesProps) {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [currentFrame, setCurrentFrame] = useState(0);
+  const [isReady, setIsReady] = useState(false);
   const animationRef = useRef<number>();
   const lastFrameTimeRef = useRef<number>(0);
+  const loadedCountRef = useRef(0);
 
   const isPolish = i18n.language === 'pl';
   const headline = isPolish ? 'WŁĄCZ ZWROT W CAŁEJ POLSCE.' : 'TURN ON RETURN ACROSS POLAND.';
@@ -20,8 +24,33 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
     ? 'Niezawodna infrastruktura automatów kaucyjnych dla rozwijającego się systemu kaucyjnego w Polsce.'
     : 'Reliable reverse vending infrastructure built for Poland\'s growing deposit-return network.';
 
+  // Preload every frame before the loop starts, so playback never stalls waiting on the network.
   useEffect(() => {
-    const frameDuration = 1000 / fps; // ms per frame
+    let cancelled = false;
+    const READY_THRESHOLD = Math.min(60, frameCount); // ~2s of footage at 30fps is enough to start smoothly
+
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image();
+      img.onload = img.onerror = () => {
+        if (cancelled) return;
+        loadedCountRef.current += 1;
+        if (!isReady && loadedCountRef.current >= READY_THRESHOLD) {
+          setIsReady(true);
+        }
+      };
+      img.src = framePath(i);
+    }
+
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [frameCount]);
+
+  useEffect(() => {
+    if (!isReady) return;
+
+    const frameDuration = 1000 / fps;
 
     const animate = (timestamp: number) => {
       if (lastFrameTimeRef.current === 0) {
@@ -31,6 +60,7 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
       const elapsed = timestamp - lastFrameTimeRef.current;
 
       if (elapsed >= frameDuration) {
+        // Modulo wraps back to frame 0 automatically — playback loops forever, never stops.
         setCurrentFrame((prev) => (prev + 1) % frameCount);
         lastFrameTimeRef.current = timestamp;
       }
@@ -45,18 +75,25 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [frameCount, fps]);
+  }, [frameCount, fps, isReady]);
+
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900">
+    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-dark via-slate-800 to-slate-900">
       {/* Frame-based video background */}
       <div
-        className="absolute inset-0 w-full h-full bg-center bg-cover transition-opacity duration-500"
+        className="absolute inset-0 w-full h-full bg-center bg-cover transition-opacity duration-700"
         style={{
-          backgroundImage: `url(/videos/frames/frame_${String(currentFrame).padStart(4, '0')}.webp)`,
+          backgroundImage: `url(${framePath(currentFrame)})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          opacity: 0.9,
+          opacity: isReady ? 1 : 0,
         }}
       />
 
@@ -72,11 +109,11 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
           {subheading}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-all">
-            Book a Meeting
+          <button onClick={() => handleScroll('book-meeting')} className="px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-all">
+            {t('header.bookMeeting')}
           </button>
-          <button className="px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary transition-all">
-            Explore Solutions
+          <button onClick={() => handleScroll('rvms')} className="px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary transition-all">
+            {t('hero.secondaryCta')}
           </button>
         </div>
       </div>

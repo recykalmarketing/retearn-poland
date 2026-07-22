@@ -74,9 +74,7 @@ export default function Home() {
 
   return (
     <main className="w-full">
-      <div className="pt-16">
-        <HeroFrames frameCount={463} fps={30} />
-      </div>
+      <HeroFrames frameCount={463} fps={30} />
 
       {/* RVMs Section */}
       <section id="rvms" className="py-24 bg-white">

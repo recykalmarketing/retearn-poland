@@ -64,25 +64,25 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-sm' : 'bg-black/40'
+      isScrolled ? 'bg-white shadow-lg' : 'bg-black/60 backdrop-blur-md'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <a href="#" className="flex-shrink-0 flex items-center">
-            <div className={`font-bold text-2xl font-poppins ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
+            <div className={`font-bold text-3xl font-poppins tracking-tight ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
               retearn.pl
             </div>
           </a>
 
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`text-sm font-bold transition-colors ${
+                className={`text-xs font-black uppercase tracking-widest transition-colors ${
                   activeSection === item.id
-                    ? isScrolled ? 'text-primary' : 'text-white'
-                    : isScrolled ? 'text-gray-700 hover:text-primary' : 'text-white hover:text-white'
+                    ? isScrolled ? 'text-primary' : 'text-yellow-300'
+                    : isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/90 hover:text-white'
                 }`}
               >
                 {t(`header.${item.label}`)}

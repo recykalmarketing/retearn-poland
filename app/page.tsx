@@ -8,6 +8,7 @@ import enTranslations from '@/lib/translations/en.json';
 import plTranslations from '@/lib/translations/pl.json';
 import Header from '@/components/Header';
 import HeroFrames from '@/components/HeroFrames';
+import ScrollingSection from '@/components/ScrollingSection';
 import Footer from '@/components/Footer';
 
 if (!i18n.isInitialized) {
@@ -38,39 +39,6 @@ export default function Home() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  const TwoColumnSection = ({ id, eyebrow, title, description, highlights, cta, imageText, isImageRight = false }: any) => (
-    <section id={id} className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column - Text */}
-          <div className={isImageRight ? '' : 'order-2 lg:order-1'}>
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">{eyebrow}</span>
-            <h2 className="mt-4 text-4xl font-bold text-gray-900 leading-tight">{title}</h2>
-            <p className="mt-6 text-lg text-gray-600 leading-relaxed">{description}</p>
-            <ul className="mt-8 space-y-4">
-              {highlights.map((item: string, i: number) => (
-                <li key={i} className="flex items-start gap-4">
-                  <span className="text-primary text-2xl font-light mt-1">→</span>
-                  <span className="text-gray-700">{item}</span>
-                </li>
-              ))}
-            </ul>
-            <button onClick={() => handleScroll('book-meeting')} className="mt-10 px-8 py-3 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-all">
-              {t(cta) || cta}
-            </button>
-          </div>
-
-          {/* Right Column - Image */}
-          <div className={isImageRight ? 'order-1 lg:order-2' : ''}>
-            <div className="bg-gradient-to-br from-gray-100 to-gray-200 h-96 rounded-2xl flex items-center justify-center shadow-lg">
-              <span className="text-gray-400 font-medium">{imageText}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
 
   return (
     <main className="w-full">
@@ -154,86 +122,80 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Retailers Section */}
-      <TwoColumnSection
-        id="retailers"
-        eyebrow="FOR RETAILERS"
-        title="Simplify returns. Drive loyalty."
-        description="Transform your returns experience with compact, connected machines designed to fit seamlessly into any retail environment."
-        highlights={[
-          'Boost customer satisfaction with frictionless returns',
-          'Reduce staff time spent processing returns',
-          'Gain real-time visibility into return patterns',
-          'Increase customer dwell time and basket size'
+      {/* Scrolling Audience Sections */}
+      <ScrollingSection
+        items={[
+          {
+            id: 'retailers',
+            eyebrow: 'FOR RETAILERS',
+            title: 'Simplify returns. Drive loyalty.',
+            description: 'Transform your returns experience with compact, connected machines designed to fit seamlessly into any retail environment.',
+            highlights: [
+              'Boost customer satisfaction with frictionless returns',
+              'Reduce staff time spent processing returns',
+              'Gain real-time visibility into return patterns',
+              'Increase customer dwell time and basket size'
+            ],
+            cta: 'header.bookMeeting',
+            imageText: 'Retail Environment'
+          },
+          {
+            id: 'drs-operators',
+            eyebrow: 'FOR DRS OPERATORS',
+            title: 'Scale with confidence.',
+            description: 'Manage entire networks from a single dashboard. Monitor machines, returns, and capacity across all your locations in real time.',
+            highlights: [
+              'Unified control across multiple locations',
+              'Predictive maintenance and fill-level alerts',
+              'Custom reporting and analytics',
+              'Automated collection route optimization'
+            ],
+            cta: 'header.bookMeeting',
+            imageText: 'Network Dashboard'
+          },
+          {
+            id: 'housing-cooperatives',
+            eyebrow: 'FOR HOUSING COOPERATIVES',
+            title: 'Convenience at your doorstep.',
+            description: 'Bring sustainable returns directly into residential communities. A shared resource that residents appreciate and neighbors value.',
+            highlights: [
+              'Compact design for courtyards and common areas',
+              'Reduces packaging waste in residential zones',
+              'Increases community engagement with sustainability',
+              'Low-maintenance, reliable operation 24/7'
+            ],
+            cta: 'header.bookMeeting',
+            imageText: 'Residential Community'
+          },
+          {
+            id: 'educational-institutions',
+            eyebrow: 'FOR EDUCATIONAL INSTITUTIONS',
+            title: 'Build sustainability culture.',
+            description: 'Make circular practices a daily habit for students and staff. Visible, engaging infrastructure that drives environmental awareness.',
+            highlights: [
+              'Encourage student participation in sustainability',
+              'Support institutional environmental commitments',
+              'Generate measurable impact data for reporting',
+              'Accessible returns across campus'
+            ],
+            cta: 'header.bookMeeting',
+            imageText: 'Campus Environment'
+          },
+          {
+            id: 'municipalities',
+            eyebrow: 'FOR MUNICIPALITIES',
+            title: 'Public infrastructure done right.',
+            description: 'Provide accessible, reliable returns infrastructure in public spaces. Serving neighbors while reducing waste in communities.',
+            highlights: [
+              'Accessible returns in high-traffic locations',
+              'Weather-resistant outdoor-ready options',
+              'Community engagement and participation',
+              'Transparent operational reporting'
+            ],
+            cta: 'header.bookMeeting',
+            imageText: 'Public Space'
+          }
         ]}
-        cta="Plan a Retail Pilot"
-        imageText="Retail Environment"
-      />
-
-      {/* DRS Operators Section */}
-      <TwoColumnSection
-        id="drs-operators"
-        eyebrow="FOR DRS OPERATORS"
-        title="Scale with confidence."
-        description="Manage entire networks from a single dashboard. Monitor machines, returns, and capacity across all your locations in real time."
-        highlights={[
-          'Unified control across multiple locations',
-          'Predictive maintenance and fill-level alerts',
-          'Custom reporting and analytics',
-          'Automated collection route optimization'
-        ]}
-        cta="Discuss Your Scale"
-        imageText="Network Dashboard"
-        isImageRight={true}
-      />
-
-      {/* Housing Section */}
-      <TwoColumnSection
-        id="housing-cooperatives"
-        eyebrow="FOR HOUSING COOPERATIVES"
-        title="Convenience at your doorstep."
-        description="Bring sustainable returns directly into residential communities. A shared resource that residents appreciate and neighbors value."
-        highlights={[
-          'Compact design for courtyards and common areas',
-          'Reduces packaging waste in residential zones',
-          'Increases community engagement with sustainability',
-          'Low-maintenance, reliable operation 24/7'
-        ]}
-        cta="Plan a Housing Project"
-        imageText="Residential Community"
-      />
-
-      {/* Educational Section */}
-      <TwoColumnSection
-        id="educational-institutions"
-        eyebrow="FOR EDUCATIONAL INSTITUTIONS"
-        title="Build sustainability culture."
-        description="Make circular practices a daily habit for students and staff. Visible, engaging infrastructure that drives environmental awareness."
-        highlights={[
-          'Encourage student participation in sustainability',
-          'Support institutional environmental commitments',
-          'Generate measurable impact data for reporting',
-          'Accessible returns across campus'
-        ]}
-        cta="Start a Campus Program"
-        imageText="Campus Environment"
-        isImageRight={true}
-      />
-
-      {/* Municipalities Section */}
-      <TwoColumnSection
-        id="municipalities"
-        eyebrow="FOR MUNICIPALITIES"
-        title="Public infrastructure done right."
-        description="Provide accessible, reliable returns infrastructure in public spaces. Serving neighbors while reducing waste in communities."
-        highlights={[
-          'Accessible returns in high-traffic locations',
-          'Weather-resistant outdoor-ready options',
-          'Community engagement and participation',
-          'Transparent operational reporting'
-        ]}
-        cta="Build a Municipal Network"
-        imageText="Public Space"
       />
 
       {/* Technology Section */}

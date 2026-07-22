@@ -69,7 +69,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16 gap-6">
           <a href="#" className="flex-shrink-0 flex items-center">
-            <Logo className={`h-6 w-auto transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`} />
+            <Logo className={`h-6 w-auto transition-colors ${isScrolled ? 'text-black' : 'text-white'}`} />
           </a>
 
           <nav className="hidden lg:flex items-center gap-4 flex-1 min-w-0">

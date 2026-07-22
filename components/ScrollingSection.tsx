@@ -98,7 +98,7 @@ export default function ScrollingSection({ items, onItemChange }: ScrollingSecti
                 </ul>
                 <button
                   onClick={handleCTA}
-                  className="mt-12 px-8 py-3 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-all"
+                  className="mt-12 px-8 py-3 bg-white border-2 border-primary text-black font-semibold rounded-full hover:bg-primary hover:text-white transition-all"
                 >
                   {t(item.cta) || item.cta}
                 </button>
@@ -108,13 +108,13 @@ export default function ScrollingSection({ items, onItemChange }: ScrollingSecti
         </div>
 
         {/* Right: Fixed image */}
-        <div className="hidden lg:flex items-center justify-center bg-gray-100 sticky top-0 h-screen">
+        <div className="hidden lg:flex items-center justify-center bg-primary/5 sticky top-0 h-screen">
           <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
             <div
-              className="bg-gradient-to-br from-gray-200 to-gray-300 w-4/5 h-4/5 rounded-3xl flex items-center justify-center shadow-2xl transition-opacity duration-300"
+              className="bg-gradient-to-br from-primary to-secondary w-4/5 h-4/5 rounded-3xl flex items-center justify-center shadow-2xl transition-opacity duration-300"
               style={{ opacity: imageOpacity }}
             >
-              <span className="text-gray-500 font-medium text-xl text-center px-4">{items[activeItem]?.imageText}</span>
+              <span className="text-white font-medium text-xl text-center px-4">{items[activeItem]?.imageText}</span>
             </div>
           </div>
         </div>

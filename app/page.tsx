@@ -83,7 +83,7 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <button onClick={() => handleScroll('book-meeting')} className="mt-8 w-full py-3 border-2 border-gray-900 text-gray-900 font-medium rounded-full hover:bg-gray-900 hover:text-white transition-all">
+                <button onClick={() => handleScroll('book-meeting')} className="mt-8 w-full py-3 bg-white border-2 border-primary text-black font-semibold rounded-full hover:bg-primary hover:text-white transition-all">
                   Learn More
                 </button>
               </div>
@@ -111,9 +111,11 @@ export default function Home() {
               <button
                 key={item.id}
                 onClick={() => handleScroll(item.id)}
-                className="p-6 bg-white rounded-2xl text-center hover:shadow-lg hover:-translate-y-2 transition-all group"
+                className="p-6 bg-white border border-primary/10 rounded-2xl text-center hover:shadow-lg hover:border-primary/40 hover:-translate-y-2 transition-all group"
               >
-                <div className="text-4xl mb-4">{item.icon}</div>
+                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center text-2xl group-hover:bg-primary group-hover:scale-110 transition-all">
+                  {item.icon}
+                </div>
                 <h3 className="font-bold text-gray-900 group-hover:text-primary transition-colors">{item.title}</h3>
                 <p className="text-sm text-gray-600 mt-2">{item.desc}</p>
               </button>
@@ -199,7 +201,7 @@ export default function Home() {
       />
 
       {/* Technology Section */}
-      <section id="technology" className="py-24 bg-gray-50">
+      <section id="technology" className="py-24 bg-primary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">TECHNOLOGY</span>
@@ -214,7 +216,7 @@ export default function Home() {
               { title: 'Connect', desc: 'Flexible integration with existing systems', icon: '🔗' },
               { title: 'Optimize', desc: 'Data-driven insights for better operations', icon: '⚡' },
             ].map((tech) => (
-              <div key={tech.title} className="bg-white p-8 rounded-2xl text-center">
+              <div key={tech.title} className="bg-white p-8 rounded-2xl text-center border-t-4 border-primary shadow-sm hover:shadow-lg transition-shadow">
                 <div className="text-5xl mb-4">{tech.icon}</div>
                 <h3 className="font-bold text-gray-900 text-lg">{tech.title}</h3>
                 <p className="text-gray-600 text-sm mt-4">{tech.desc}</p>
@@ -253,7 +255,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section id="book-meeting" className="py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+      <section id="book-meeting" className="py-32 bg-gradient-to-br from-primary-dark via-primary to-secondary text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">{t('cta.heading') || 'Let us build your return solution.'}</h2>
@@ -277,17 +279,17 @@ export default function Home() {
               />
             ))}
             <select className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white rounded-lg focus:outline-none focus:border-white/40 transition-colors">
-              <option className="bg-gray-900" value="">Select Your Sector</option>
-              <option className="bg-gray-900">Retailer</option>
-              <option className="bg-gray-900">DRS Operator</option>
-              <option className="bg-gray-900">Housing Cooperative</option>
-              <option className="bg-gray-900">Educational Institution</option>
-              <option className="bg-gray-900">Municipality</option>
+              <option className="bg-primary-dark" value="">Select Your Sector</option>
+              <option className="bg-primary-dark">Retailer</option>
+              <option className="bg-primary-dark">DRS Operator</option>
+              <option className="bg-primary-dark">Housing Cooperative</option>
+              <option className="bg-primary-dark">Educational Institution</option>
+              <option className="bg-primary-dark">Municipality</option>
             </select>
             <input type="number" placeholder="Number of Locations" className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors" />
             <input type="text" placeholder="Project Timeline" className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors" />
             <textarea placeholder="Tell us about your project" rows={4} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:border-white/40 transition-colors"></textarea>
-            <button type="submit" className="w-full py-4 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-100 transition-all text-lg">
+            <button type="submit" className="w-full py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-all text-lg">
               {t('cta.submitButton') || 'Schedule a Conversation'}
             </button>
           </form>

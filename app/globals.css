@@ -90,12 +90,12 @@ section {
 
 /* Buttons */
 .btn-primary {
-  @apply px-8 py-3 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-all duration-200 cursor-pointer inline-block;
+  @apply px-8 py-3 bg-white text-black border-2 border-primary rounded-full font-semibold hover:bg-primary hover:text-white transition-all duration-200 cursor-pointer inline-block;
   font-family: 'Poppins', sans-serif;
 }
 
 .btn-secondary {
-  @apply px-8 py-3 bg-transparent border-2 border-gray-900 text-gray-900 rounded-full font-medium hover:bg-gray-900 hover:text-white transition-all duration-200 cursor-pointer inline-block;
+  @apply px-8 py-3 bg-transparent border-2 border-primary text-primary rounded-full font-medium hover:bg-primary hover:text-white transition-all duration-200 cursor-pointer inline-block;
   font-family: 'Poppins', sans-serif;
 }
 

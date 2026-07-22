@@ -15,7 +15,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="mb-4 flex">
-              <Logo />
+              <Logo className="h-9 w-auto text-white" />
             </div>
             <p className="text-sm text-gray-300">
               Connected return infrastructure for Poland.

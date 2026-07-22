@@ -7,9 +7,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#231f20',
-        secondary: '#f5f5f5',
-        accent: '#0070f3',
+        primary: '#6a398c',
+        'primary-dark': '#4a2866',
+        secondary: '#9c539c',
+        'soft-violet': '#a16dc9',
+        'forest-green': '#5b8563',
+        'skyline-blue': '#00b4d8',
+        ink: '#231f20',
       },
       fontFamily: {
         sans: ['system-ui', 'sans-serif'],

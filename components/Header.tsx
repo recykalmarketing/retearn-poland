@@ -64,14 +64,12 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-lg' : 'bg-black/60 backdrop-blur-md'
+      isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <a href="#" className="flex-shrink-0 flex items-center">
-            <div className={`font-bold text-3xl font-poppins tracking-tight ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
-              retearn.pl
-            </div>
+            <Logo className={`h-9 w-auto transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`} />
           </a>
 
           <nav className="hidden lg:flex items-center space-x-6">
@@ -79,10 +77,10 @@ export default function Header() {
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`text-xs font-black uppercase tracking-widest transition-colors ${
+                className={`text-xs font-semibold uppercase tracking-widest transition-colors ${
                   activeSection === item.id
-                    ? isScrolled ? 'text-primary' : 'text-yellow-300'
-                    : isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/90 hover:text-white'
+                    ? isScrolled ? 'text-primary' : 'text-white'
+                    : isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/85 hover:text-white'
                 }`}
               >
                 {t(`header.${item.label}`)}
@@ -94,7 +92,7 @@ export default function Header() {
             <button
               onClick={toggleLanguage}
               className={`text-sm font-semibold px-3 py-1 transition-colors ${
-                isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/80 hover:text-white'
+                isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/85 hover:text-white'
               }`}
             >
               {i18n.language === 'pl' ? 'EN' : 'PL'}
@@ -102,7 +100,7 @@ export default function Header() {
 
             <button
               onClick={handleBookMeeting}
-              className="hidden md:block px-6 py-2 bg-white text-primary font-medium rounded-full hover:bg-gray-100 transition-all text-sm"
+              className="hidden md:block px-6 py-2 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-all text-sm"
             >
               {t('header.bookMeeting')}
             </button>
@@ -119,14 +117,14 @@ export default function Header() {
         </div>
 
         {isMobileMenuOpen && (
-          <div className={`lg:hidden pb-4 ${isScrolled ? 'bg-white' : 'bg-black/80'}`}>
+          <div className={`lg:hidden pb-4 ${isScrolled ? 'bg-white' : 'bg-primary-dark/95 backdrop-blur-md rounded-b-2xl'}`}>
             <nav className="flex flex-col space-y-2 pt-4">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
                   className={`text-left px-4 py-2 text-sm transition-colors ${
-                    isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/80 hover:text-white'
+                    isScrolled ? 'text-gray-600 hover:text-primary' : 'text-white/90 hover:text-white'
                   }`}
                 >
                   {t(`header.${item.label}`)}

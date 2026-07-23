@@ -16,7 +16,7 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
   const [isReady, setIsReady] = useState(false);
   const animationRef = useRef<number>();
   const lastFrameTimeRef = useRef<number>(0);
-  const loadedCountRef = useRef(0);
+  const loadedFramesRef = useRef<Set<number>>(new Set());
 
   const isPolish = i18n.language === 'pl';
   const headline = isPolish ? 'WŁĄCZ ZWROT W CAŁEJ POLSCE.' : 'TURN ON RETURN ACROSS POLAND.';
@@ -24,19 +24,19 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
     ? 'Niezawodna infrastruktura automatów kaucyjnych dla rozwijającego się systemu kaucyjnego w Polsce.'
     : 'Reliable reverse vending infrastructure built for Poland\'s growing deposit-return network.';
 
-  // Preload every frame before the loop starts, so playback never stalls waiting on the network.
+  // Kick off loading every frame, but don't gate playback on all of them finishing —
+  // on a slow connection that could take a long time and the hero would look stuck.
+  // Show the video as soon as frame 0 is in, and let the animation loop below only
+  // advance onto frames that have actually finished loading.
   useEffect(() => {
     let cancelled = false;
-    const READY_THRESHOLD = Math.min(60, frameCount); // ~2s of footage at 30fps is enough to start smoothly
 
     for (let i = 0; i < frameCount; i++) {
       const img = new Image();
       img.onload = img.onerror = () => {
         if (cancelled) return;
-        loadedCountRef.current += 1;
-        if (!isReady && loadedCountRef.current >= READY_THRESHOLD) {
-          setIsReady(true);
-        }
+        loadedFramesRef.current.add(i);
+        if (i === 0) setIsReady(true);
       };
       img.src = framePath(i);
     }
@@ -44,7 +44,6 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
     return () => {
       cancelled = true;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [frameCount]);
 
   useEffect(() => {
@@ -60,8 +59,13 @@ export default function HeroFrames({ frameCount = 180, fps = 30 }: HeroFramesPro
       const elapsed = timestamp - lastFrameTimeRef.current;
 
       if (elapsed >= frameDuration) {
-        // Modulo wraps back to frame 0 automatically — playback loops forever, never stops.
-        setCurrentFrame((prev) => (prev + 1) % frameCount);
+        setCurrentFrame((prev) => {
+          // Modulo wraps back to frame 0 automatically — playback loops forever.
+          const next = (prev + 1) % frameCount;
+          // If the network hasn't delivered the next frame yet, hold on the current
+          // one instead of jumping to a blank image — it resumes as soon as it arrives.
+          return loadedFramesRef.current.has(next) ? next : prev;
+        });
         lastFrameTimeRef.current = timestamp;
       }
 

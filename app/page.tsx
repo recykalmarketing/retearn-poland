@@ -46,6 +46,11 @@ interface FaqItem {
   a: string;
 }
 
+const productImages: Record<string, string> = {
+  'Reklaim Ace': '/images/reklaim-ace.png',
+  'Reklaim Bulk': '/images/reklaim-bulk.png',
+};
+
 const audienceIcons: Record<string, string> = {
   retailers: '🏬',
   drsOperators: '📊',
@@ -112,8 +117,12 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {products.map((product) => (
               <div key={product.name} className="border border-gray-200 rounded-2xl p-8 hover:shadow-xl transition-shadow">
-                <div className="bg-gray-100 h-56 rounded-xl mb-8 flex items-center justify-center">
-                  <span className="text-gray-400 text-lg">{product.name} Visual</span>
+                <div className="aspect-[4/5] bg-gray-50 rounded-xl mb-8 overflow-hidden p-6">
+                  <img
+                    src={productImages[product.name]}
+                    alt={product.name}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">{product.name}</h3>
                 <p className="text-primary font-semibold mt-2">{product.subtitle}</p>
